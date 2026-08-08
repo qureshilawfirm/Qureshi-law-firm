@@ -683,4 +683,863 @@ section{
 .why-box p{
     color:#666;
 
-    font-size:
+    font-size:13px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    max-width:800px;
+
+    margin:auto;
+
+    border:2px solid #111;
+
+    padding:55px 30px;
+}
+
+.contact-box h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:40px;
+
+    margin-bottom:5px;
+}
+
+.contact-box p{
+    color:#555;
+
+    font-size:14px;
+
+    margin:5px 0;
+}
+
+.contact-btn{
+    display:inline-block;
+
+    background:#000;
+
+    color:#fff;
+
+    padding:14px 28px;
+
+    margin:25px 5px 0;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.contact-btn:hover{
+    background:#333;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#000;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:55px 20px;
+}
+
+footer img{
+    width:75px;
+    height:75px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    padding:5px;
+
+    border-radius:50%;
+
+    margin:0 auto 18px;
+}
+
+footer h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+
+    letter-spacing:3px;
+}
+
+footer p{
+    color:#aaa;
+
+    font-size:12px;
+
+    margin-top:7px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .mentor-inner{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .mentor-message{
+        text-align:left;
+
+        border-left:none;
+
+        border-top:2px solid #fff;
+
+        padding:35px 10px 0;
+    }
+
+    .principal-grid{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .message{
+        text-align:left;
+    }
+
+    .services{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .specialist-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media(max-width:600px){
+
+    section{
+        padding:70px 6%;
+    }
+
+    .brand-title{
+        font-size:20px;
+    }
+
+    .brand-logo{
+        width:48px;
+        height:48px;
+    }
+
+    .hero{
+        padding:70px 7%;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .section-heading h2{
+        font-size:43px;
+    }
+
+    .mentor-photo img{
+        width:220px;
+        height:270px;
+    }
+
+    .mentor-message h2{
+        font-size:40px;
+    }
+
+    .mentor-message blockquote{
+        font-size:23px;
+    }
+
+    .principal-photo img{
+        width:220px;
+        height:285px;
+    }
+
+    .message{
+        padding:30px 22px;
+    }
+
+    .message h3{
+        font-size:32px;
+    }
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .specialist-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about h2{
+        font-size:45px;
+    }
+
+    .contact-box{
+        padding:40px 20px;
+    }
+
+    .contact-box h3{
+        font-size:34px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="header-inner">
+
+<div class="brand">
+
+<img
+class="brand-logo"
+src="IMG_20260808_121642.png"
+alt="Qureshi Law Firm Logo">
+
+<div>
+
+<div class="brand-title">
+QURESHI LAW FIRM
+</div>
+
+<div class="brand-subtitle">
+AQEEL AHMED QURESHI | ADVOCATE HIGH COURT
+</div>
+
+</div>
+
+</div>
+
+
+<nav>
+
+<a href="#home">HOME</a>
+
+<a href="#mentor">MENTOR</a>
+
+<a href="#principal">PRINCIPAL</a>
+
+<a href="#services">SERVICES</a>
+
+<a href="#specialists">SPECIALISTS</a>
+
+<a href="#contact">CONTACT</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="eyebrow">
+HIGH COURT ADVOCACY • PAKISTAN
+</div>
+
+<h1>
+Trusted <span>Legal Counsel,</span><br>
+Rooted in Principle.
+</h1>
+
+<p>
+Qureshi Law Firm provides professional, ethical and
+results-oriented legal services with a commitment to
+justice, integrity and the rule of law.
+</p>
+
+<a class="btn" href="#contact">
+CONTACT THE FIRM
+</a>
+
+<a class="btn" href="#services">
+OUR LEGAL SERVICES
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     MENTOR
+========================= -->
+
+<section class="mentor" id="mentor">
+
+<div class="mentor-inner">
+
+
+<div class="mentor-photo">
+
+<img
+src="IMG_20241215_212343.jpg"
+alt="Sir Rafaqat Hussain Shah Advocate">
+
+<h3>
+Sir Rafaqat Hussain Shah
+</h3>
+
+<p>
+ADVOCATE
+</p>
+
+</div>
+
+
+<div class="mentor-message">
+
+<div class="mentor-label">
+A TRIBUTE OF GRATITUDE & RESPECT
+</div>
+
+<h2>
+Our Esteemed Mentor
+</h2>
+
+<blockquote>
+“With deep gratitude and respect, we dedicated this work
+to our esteemed teacher, Sir RAFAQAT HUSSAIN SHAH ADVOCATE.”
+</blockquote>
+
+<div class="dedication">
+A teacher leaves a lasting imprint not only through
+knowledge, but through character, principles and example.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PRINCIPAL ADVOCATE
+========================= -->
+
+<section class="principal" id="principal">
+
+<div class="section-heading">
+
+<h2>
+Principal Advocate
+</h2>
+
+<p>
+Leadership grounded in law, integrity and justice
+</p>
+
+</div>
+
+
+<div class="principal-grid">
+
+
+<div class="principal-photo">
+
+<img
+src="1770194199829.png"
+alt="Aqeel Ahmed Qureshi Advocate High Court">
+
+<h3>
+Aqeel Ahmed Qureshi
+</h3>
+
+<p>
+ADVOCATE HIGH COURT
+</p>
+
+</div>
+
+
+<div class="message">
+
+<h3>
+Message from the Principal Advocate
+</h3>
+
+<p>
+At Qureshi Law Firm, we believe that the practice of law
+is not merely a profession; it is a responsibility entrusted
+to us by our clients and by society.
+</p>
+
+<p>
+Every legal matter deserves careful consideration,
+honest advice and dedicated representation. Our commitment
+is to protect the lawful rights and interests of our clients
+while maintaining the highest standards of professional
+ethics and integrity.
+</p>
+
+<p>
+We strive to provide clear legal guidance, strong advocacy
+and practical solutions. Whether a matter concerns civil,
+family, criminal or constitutional law, our approach remains
+the same: understand the facts, respect the law and pursue
+justice with determination.
+</p>
+
+<p>
+Every client deserves to be heard, every case deserves
+dedication, and every lawful right deserves protection.
+</p>
+
+<div class="signature">
+
+Aqeel Ahmed Qureshi<br>
+Advocate High Court<br>
+Principal Advocate — Qureshi Law Firm
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section id="services">
+
+<div class="section-heading">
+
+<h2>
+Areas of Practice
+</h2>
+
+<p>
+Professional legal representation and advisory services
+</p>
+
+</div>
+
+
+<div class="services">
+
+
+<div class="service">
+
+<div class="service-number">
+01
+</div>
+
+<h3>
+Civil Law
+</h3>
+
+<p>
+Property disputes, partition suits, injunctions,
+declarations, civil litigation and related matters.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+02
+</div>
+
+<h3>
+Family Law
+</h3>
+
+<p>
+Maintenance, dower, custody, guardianship,
+Nikahnama disputes and family litigation.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+03
+</div>
+
+<h3>
+Criminal Law
+</h3>
+
+<p>
+Criminal defence, bail, trial proceedings and
+representation before competent courts.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+04
+</div>
+
+<h3>
+Constitutional Law
+</h3>
+
+<p>
+Constitutional petitions, writ jurisdiction and
+legal matters before the High Court.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     SPECIALISTS
+========================= -->
+
+<section class="specialists" id="specialists">
+
+<div class="section-heading">
+
+<h2>
+Our Legal Specialists
+</h2>
+
+<p style="color:#aaa;">
+Focused legal expertise across major areas of practice
+</p>
+
+</div>
+
+
+<div class="specialist-grid">
+
+
+<div class="specialist">
+
+<div class="specialist-icon">
+§
+</div>
+
+<h3>
+Civil Litigation
+</h3>
+
+<p>
+Specialized attention to property disputes,
+partition matters, injunctions, declarations
+and civil litigation.
+</p>
+
+</div>
+
+
+<div class="specialist">
+
+<div class="specialist-icon">
+⚖
+</div>
+
+<h3>
+Family Matters
+</h3>
+
+<p>
+Professional assistance in family disputes,
+maintenance, dower, custody and guardianship
+matters.
+</p>
+
+</div>
+
+
+<div class="specialist">
+
+<div class="specialist-icon">
+◈
+</div>
+
+<h3>
+Criminal Defence
+</h3>
+
+<p>
+Dedicated representation in criminal proceedings,
+bail matters, trial proceedings and related cases.
+</p>
+
+</div>
+
+
+<div class="specialist">
+
+<div class="specialist-icon">
+◆
+</div>
+
+<h3>
+Constitutional Law
+</h3>
+
+<p>
+Legal assistance concerning constitutional rights,
+writ jurisdiction and proceedings before the
+High Court.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about">
+
+<div class="about-content">
+
+<h2>
+Qureshi Law Firm
+</h2>
+
+<p>
+A professional legal practice committed to reliable
+representation, practical legal solutions and the
+protection of lawful rights. Led by Aqeel Ahmed Qureshi,
+Advocate High Court, the firm serves clients with
+dedication, discretion and respect for the law.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     WHY US
+========================= -->
+
+<section class="why">
+
+<div class="section-heading">
+
+<h2>
+Why Choose Qureshi Law Firm?
+</h2>
+
+<p>
+Professionalism • Integrity • Commitment
+</p>
+
+</div>
+
+
+<div class="why-grid">
+
+
+<div class="why-box">
+
+<h3>
+Professional Advice
+</h3>
+
+<p>
+Clear and practical legal guidance based on the
+facts and applicable law.
+</p>
+
+</div>
+
+
+<div class="why-box">
+
+<h3>
+Dedicated Advocacy
+</h3>
+
+<p>
+Committed representation with careful attention
+to every legal matter.
+</p>
+
+</div>
+
+
+<div class="why-box">
+
+<h3>
+Integrity
+</h3>
+
+<p>
+Honest, ethical and confidential professional service.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+<div class="section-heading">
+
+<h2>
+Contact Qureshi Law Firm
+</h2>
+
+<p>
+For legal consultation and professional representation
+</p>
+
+</div>
+
+
+<div class="contact-box">
+
+<h3>
+Aqeel Ahmed Qureshi
+</h3>
+
+<p>
+<strong>Advocate High Court</strong>
+</p>
+
+<p>
+Principal Advocate — Qureshi Law Firm
+</p>
+
+<p>
+Pakistan
+</p>
+
+
+<a
+class="contact-btn"
+href="tel:+923088383531">
+
+CALL NOW
+
+</a>
+
+
+<a
+class="contact-btn"
+href="https://wa.me/923088383531">
+
+WHATSAPP
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<img
+src="IMG_20260808_121642.png"
+alt="Qureshi Law Firm Logo">
+
+<h3>
+QURESHI LAW FIRM
+</h3>
+
+<p>
+Aqeel Ahmed Qureshi | Advocate High Court
+</p>
+
+<p>
+© 2026 Qureshi Law Firm. All Rights Reserved.
+</p>
+
+</footer>
+
+
+</body>
+</html>
