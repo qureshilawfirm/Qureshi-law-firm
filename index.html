@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
 
 <title>Qureshi Law Firm | Aqeel Ahmed Qureshi</title>
 
@@ -12,15 +13,20 @@
 content="Qureshi Law Firm — Professional Legal Services by Aqeel Ahmed Qureshi, Advocate High Court, Pakistan.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
 
 <style>
 
-/* =========================
+/* =====================================================
    GLOBAL
-========================= */
+===================================================== */
 
 *{
     margin:0;
@@ -33,8 +39,8 @@ html{
 }
 
 body{
-    background:#ffffff;
-    color:#111111;
+    background:#fff;
+    color:#111;
     font-family:'Montserrat',Arial,sans-serif;
     line-height:1.7;
 }
@@ -48,23 +54,39 @@ a{
     text-decoration:none;
 }
 
-.container{
-    width:88%;
-    max-width:1250px;
-    margin:auto;
+section{
+    padding:100px 7%;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:850px;
+    margin:0 auto 60px;
+}
+
+.section-heading h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:55px;
+    line-height:1;
+    margin-bottom:15px;
+}
+
+.section-heading p{
+    color:#777;
+    font-size:14px;
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
 
-    background:rgba(0,0,0,.96);
+    background:rgba(0,0,0,.97);
     color:#fff;
 
     border-bottom:1px solid #333;
@@ -110,17 +132,18 @@ header{
     font-size:9px;
     letter-spacing:2px;
     color:#aaa;
-    margin-top:-3px;
 }
 
 nav{
     display:flex;
-    gap:25px;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
 }
 
 nav a{
     color:#fff;
-    font-size:12px;
+    font-size:10px;
     letter-spacing:1px;
     transition:.3s;
 }
@@ -130,17 +153,17 @@ nav a:hover{
 }
 
 
-/* =========================
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
     min-height:88vh;
 
     background:
     linear-gradient(
-        rgba(0,0,0,.94),
-        rgba(0,0,0,.94)
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.95)
     );
 
     color:#fff;
@@ -215,41 +238,9 @@ nav a:hover{
 }
 
 
-/* =========================
-   COMMON SECTION
-========================= */
-
-section{
-    padding:100px 7%;
-}
-
-.section-heading{
-    text-align:center;
-
-    max-width:800px;
-
-    margin:0 auto 65px;
-}
-
-.section-heading h2{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:55px;
-
-    line-height:1;
-
-    margin-bottom:15px;
-}
-
-.section-heading p{
-    color:#777;
-    font-size:14px;
-}
-
-
-/* =========================
+/* =====================================================
    MENTOR
-========================= */
+===================================================== */
 
 .mentor{
     background:#050505;
@@ -302,8 +293,6 @@ section{
     margin:auto;
 
     border:8px solid #fff;
-
-    filter:none;
 
     box-shadow:0 20px 50px rgba(255,255,255,.08);
 }
@@ -364,14 +353,12 @@ section{
     color:#aaa;
 
     font-size:13px;
-
-    letter-spacing:.5px;
 }
 
 
-/* =========================
+/* =====================================================
    PRINCIPAL
-========================= */
+===================================================== */
 
 .principal{
     background:#f5f5f5;
@@ -404,8 +391,6 @@ section{
     margin:auto;
 
     border:8px solid #111;
-
-    filter:none;
 
     box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
@@ -465,9 +450,9 @@ section{
 }
 
 
-/* =========================
+/* =====================================================
    SERVICES
-========================= */
+===================================================== */
 
 .services{
     max-width:1200px;
@@ -544,9 +529,9 @@ section{
 }
 
 
-/* =========================
+/* =====================================================
    SPECIALISTS
-========================= */
+===================================================== */
 
 .specialists{
     background:#050505;
@@ -609,9 +594,386 @@ section{
 }
 
 
-/* =========================
+/* =====================================================
+   OUR TEAM
+===================================================== */
+
+.team-section{
+    background:#fff;
+}
+
+.team-grid{
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+}
+
+.team-card{
+    border:1px solid #ddd;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    transition:.4s;
+
+    background:#fff;
+}
+
+.team-card:hover{
+    transform:translateY(-7px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+}
+
+.team-card h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.team-card .designation{
+    font-size:11px;
+
+    letter-spacing:1.5px;
+
+    color:#777;
+
+    margin-bottom:15px;
+}
+
+.team-card p{
+    font-size:13px;
+
+    color:#555;
+}
+
+
+/* =====================================================
+   OUR CASES
+===================================================== */
+
+.cases-section{
+    background:#050505;
+
+    color:#fff;
+}
+
+.case-grid{
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+}
+
+.case-card{
+    border:1px solid #333;
+
+    padding:35px;
+
+    transition:.4s;
+}
+
+.case-card:hover{
+    background:#fff;
+
+    color:#000;
+
+    transform:translateY(-6px);
+}
+
+.case-number{
+    font-size:11px;
+
+    color:#999;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+}
+
+.case-card h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+}
+
+.case-card p{
+    color:#aaa;
+
+    font-size:13px;
+}
+
+.case-card:hover p{
+    color:#444;
+}
+
+
+/* =====================================================
+   LEGAL ARTICLES
+===================================================== */
+
+.articles-section{
+    background:#f5f5f5;
+}
+
+.article-grid{
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+}
+
+.article-card{
+    background:#fff;
+
+    padding:32px 25px;
+
+    border-left:4px solid #000;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+    transition:.3s;
+}
+
+.article-card:hover{
+    transform:translateY(-6px);
+}
+
+.article-card h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+
+    margin-bottom:12px;
+}
+
+.article-card p{
+    color:#555;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   COURT ACHIEVEMENTS
+===================================================== */
+
+.achievements-section{
+    background:#fff;
+
+    text-align:center;
+}
+
+.achievement-grid{
+    max-width:1000px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+}
+
+.achievement{
+    border:1px solid #222;
+
+    padding:35px 20px;
+
+    transition:.3s;
+}
+
+.achievement:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.1);
+}
+
+.achievement-number{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:45px;
+
+    margin-bottom:10px;
+}
+
+.achievement h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:25px;
+
+    margin-bottom:10px;
+}
+
+.achievement p{
+    color:#666;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   TESTIMONIALS
+===================================================== */
+
+.testimonials-section{
+    background:#050505;
+
+    color:#fff;
+}
+
+.testimonial-grid{
+    max-width:1000px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+}
+
+.testimonial{
+    border:1px solid #333;
+
+    padding:35px;
+}
+
+.testimonial blockquote{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:23px;
+
+    line-height:1.5;
+
+    color:#eee;
+}
+
+.testimonial-name{
+    margin-top:20px;
+
+    color:#aaa;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+}
+
+
+/* =====================================================
+   LEGAL AWARENESS
+===================================================== */
+
+.awareness-section{
+    background:#f3f3f3;
+}
+
+.awareness-grid{
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+}
+
+.awareness-card{
+    background:#fff;
+
+    padding:32px 25px;
+
+    border-top:3px solid #000;
+}
+
+.awareness-card h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+
+    margin-bottom:12px;
+}
+
+.awareness-card p{
+    color:#555;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   LATEST UPDATES
+===================================================== */
+
+.updates-section{
+    background:#fff;
+}
+
+.update-list{
+    max-width:950px;
+
+    margin:auto;
+}
+
+.update{
+    border-bottom:1px solid #ddd;
+
+    padding:25px 10px;
+}
+
+.update-date{
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#888;
+
+    margin-bottom:8px;
+}
+
+.update h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:27px;
+
+    margin-bottom:7px;
+}
+
+.update p{
+    color:#555;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
    ABOUT
-========================= */
+===================================================== */
 
 .about{
     background:#fff;
@@ -642,9 +1004,9 @@ section{
 }
 
 
-/* =========================
+/* =====================================================
    WHY US
-========================= */
+===================================================== */
 
 .why{
     background:#f3f3f3;
@@ -687,12 +1049,14 @@ section{
 }
 
 
-/* =========================
-   CONTACT
-========================= */
+/* =====================================================
+   CONTACT / APPOINTMENT
+===================================================== */
 
 .contact{
     text-align:center;
+
+    background:#fff;
 }
 
 .contact-box{
@@ -744,9 +1108,9 @@ section{
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
     background:#000;
@@ -760,6 +1124,7 @@ footer{
 
 footer img{
     width:75px;
+
     height:75px;
 
     object-fit:contain;
@@ -790,18 +1155,55 @@ footer p{
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
     nav{
-        display:none;
+        gap:12px;
     }
 
-    .hero{
-        min-height:80vh;
+    nav a{
+        font-size:9px;
+    }
+
+    .services{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .specialist-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .article-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .awareness-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+
+@media(max-width:800px){
+
+    header{
+        position:relative;
+    }
+
+    .header-inner{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    nav{
+        justify-content:center;
     }
 
     .mentor-inner{
@@ -830,12 +1232,16 @@ footer p{
         text-align:left;
     }
 
-    .services{
-        grid-template-columns:1fr 1fr;
+    .case-grid{
+        grid-template-columns:1fr;
     }
 
-    .specialist-grid{
-        grid-template-columns:1fr 1fr;
+    .testimonial-grid{
+        grid-template-columns:1fr;
+    }
+
+    .achievement-grid{
+        grid-template-columns:1fr;
     }
 
     .why-grid{
@@ -850,13 +1256,35 @@ footer p{
         padding:70px 6%;
     }
 
+    .header-inner{
+        gap:15px;
+    }
+
     .brand-title{
         font-size:20px;
+    }
+
+    .brand-subtitle{
+        font-size:8px;
     }
 
     .brand-logo{
         width:48px;
         height:48px;
+    }
+
+    nav{
+        display:flex;
+
+        width:100%;
+
+        gap:10px 15px;
+
+        justify-content:center;
+    }
+
+    nav a{
+        font-size:8px;
     }
 
     .hero{
@@ -909,6 +1337,18 @@ footer p{
         grid-template-columns:1fr;
     }
 
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .article-grid{
+        grid-template-columns:1fr;
+    }
+
+    .awareness-grid{
+        grid-template-columns:1fr;
+    }
+
     .about h2{
         font-size:45px;
     }
@@ -920,18 +1360,20 @@ footer p{
     .contact-box h3{
         font-size:34px;
     }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
@@ -969,9 +1411,21 @@ AQEEL AHMED QURESHI | ADVOCATE HIGH COURT
 
 <a href="#services">SERVICES</a>
 
-<a href="#specialists">SPECIALISTS</a>
+<a href="#team">OUR TEAM</a>
 
-<a href="#contact">CONTACT</a>
+<a href="#cases">OUR CASES</a>
+
+<a href="#articles">ARTICLES</a>
+
+<a href="#achievements">ACHIEVEMENTS</a>
+
+<a href="#testimonials">TESTIMONIALS</a>
+
+<a href="#awareness">AWARENESS</a>
+
+<a href="#updates">UPDATES</a>
+
+<a href="#contact">APPOINTMENT</a>
 
 </nav>
 
@@ -981,9 +1435,9 @@ AQEEL AHMED QURESHI | ADVOCATE HIGH COURT
 
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero" id="home">
 
@@ -1018,9 +1472,9 @@ OUR LEGAL SERVICES
 
 
 
-<!-- =========================
+<!-- =====================================================
      MENTOR
-========================= -->
+===================================================== -->
 
 <section class="mentor" id="mentor">
 
@@ -1030,7 +1484,7 @@ OUR LEGAL SERVICES
 <div class="mentor-photo">
 
 <img
-src=IMG_20260808_121642.png
+src="IMG_20260808_121642.png"
 alt="Sir Rafaqat Hussain Shah Advocate">
 
 <h3>
@@ -1059,11 +1513,6 @@ Our Esteemed Mentor
 to our esteemed teacher, Sir RAFAQAT HUSSAIN SHAH ADVOCATE.”
 </blockquote>
 
-<div class="dedication">
-A teacher leaves a lasting imprint not only through
-knowledge, but through character, principles and example.
-</div>
-
 </div>
 
 </div>
@@ -1072,9 +1521,9 @@ knowledge, but through character, principles and example.
 
 
 
-<!-- =========================
+<!-- =====================================================
      PRINCIPAL ADVOCATE
-========================= -->
+===================================================== -->
 
 <section class="principal" id="principal">
 
@@ -1160,9 +1609,9 @@ Principal Advocate — Qureshi Law Firm
 
 
 
-<!-- =========================
+<!-- =====================================================
      SERVICES
-========================= -->
+===================================================== -->
 
 <section id="services">
 
@@ -1259,9 +1708,9 @@ legal matters before the High Court.
 
 
 
-<!-- =========================
+<!-- =====================================================
      SPECIALISTS
-========================= -->
+===================================================== -->
 
 <section class="specialists" id="specialists">
 
@@ -1361,9 +1810,584 @@ High Court.
 
 
 
-<!-- =========================
+<!-- =====================================================
+     OUR TEAM
+===================================================== -->
+
+<section class="team-section" id="team">
+
+<div class="section-heading">
+
+<h2>
+Our Team
+</h2>
+
+<p>
+Dedicated professionals supporting the legal practice
+of Qureshi Law Firm
+</p>
+
+</div>
+
+
+<div class="team-grid">
+
+
+<div class="team-card">
+
+<h3>
+Sarfraz Khan
+</h3>
+
+<div class="designation">
+ADVOCATE HIGH COURT
+</div>
+
+<p>
+Banking & Financial Matters Advisor
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<h3>
+Affan Awais
+</h3>
+
+<div class="designation">
+ADVOCATE HIGH COURT
+</div>
+
+<p>
+Family Matters Advisor / Researcher
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<h3>
+Tariq Ali Khan
+</h3>
+
+<div class="designation">
+ADVOCATE HIGH COURT
+</div>
+
+<p>
+Legal Advisory & Professional Support
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<h3>
+Waheed Ellahi
+</h3>
+
+<div class="designation">
+ADVOCATE HIGH COURT
+</div>
+
+<p>
+Mediator
+</p>
+
+</div>
+
+
+<div class="team-card">
+
+<h3>
+Syed Qasim Raza
+</h3>
+
+<div class="designation">
+ADVOCATE
+</div>
+
+<p>
+Criminal Matters Advisor / Researcher
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OUR CASES
+===================================================== -->
+
+<section class="cases-section" id="cases">
+
+<div class="section-heading">
+
+<h2>
+Our Cases / Case Studies
+</h2>
+
+<p style="color:#aaa;">
+Selected areas of legal representation and case experience
+</p>
+
+</div>
+
+
+<div class="case-grid">
+
+
+<div class="case-card">
+
+<div class="case-number">
+CASE STUDY 01
+</div>
+
+<h3>
+Civil & Property Litigation
+</h3>
+
+<p>
+Representation in property disputes, partition matters,
+injunctions, declarations and other civil litigation.
+</p>
+
+</div>
+
+
+<div class="case-card">
+
+<div class="case-number">
+CASE STUDY 02
+</div>
+
+<h3>
+Family Litigation
+</h3>
+
+<p>
+Legal representation and advisory services concerning
+maintenance, dower, custody, guardianship and family disputes.
+</p>
+
+</div>
+
+
+<div class="case-card">
+
+<div class="case-number">
+CASE STUDY 03
+</div>
+
+<h3>
+Criminal Defence
+</h3>
+
+<p>
+Professional representation in criminal proceedings,
+bail matters, trials and related legal proceedings.
+</p>
+
+</div>
+
+
+<div class="case-card">
+
+<div class="case-number">
+CASE STUDY 04
+</div>
+
+<h3>
+Constitutional Matters
+</h3>
+
+<p>
+Constitutional petitions, writ jurisdiction and protection
+of fundamental and legal rights before competent courts.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LEGAL ARTICLES
+===================================================== -->
+
+<section class="articles-section" id="articles">
+
+<div class="section-heading">
+
+<h2>
+Legal Articles
+</h2>
+
+<p>
+Legal knowledge explained in a clear and practical manner
+</p>
+
+</div>
+
+
+<div class="article-grid">
+
+
+<div class="article-card">
+
+<h3>
+Understanding Property Rights
+</h3>
+
+<p>
+An introduction to important legal principles concerning
+ownership, possession and property disputes.
+</p>
+
+</div>
+
+
+<div class="article-card">
+
+<h3>
+Partition of Property
+</h3>
+
+<p>
+Understanding the basic legal framework governing partition
+of jointly owned immovable property.
+</p>
+
+</div>
+
+
+<div class="article-card">
+
+<h3>
+Fundamental Legal Rights
+</h3>
+
+<p>
+A simple overview of fundamental rights and available legal
+remedies under the Constitution.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COURT ACHIEVEMENTS
+===================================================== -->
+
+<section class="achievements-section" id="achievements">
+
+<div class="section-heading">
+
+<h2>
+Court Achievements
+</h2>
+
+<p>
+Professional advocacy and commitment to our clients
+</p>
+
+</div>
+
+
+<div class="achievement-grid">
+
+
+<div class="achievement">
+
+<div class="achievement-number">
+01
+</div>
+
+<h3>
+High Court Advocacy
+</h3>
+
+<p>
+Representation before the High Court in constitutional,
+civil and other legal matters.
+</p>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-number">
+02
+</div>
+
+<h3>
+Civil Litigation
+</h3>
+
+<p>
+Dedicated representation in complex civil and property
+disputes.
+</p>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-number">
+03
+</div>
+
+<h3>
+Legal Research
+</h3>
+
+<p>
+Focused legal research and preparation to support effective
+court representation.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLIENT TESTIMONIALS
+===================================================== -->
+
+<section class="testimonials-section" id="testimonials">
+
+<div class="section-heading">
+
+<h2>
+Client Testimonials
+</h2>
+
+<p style="color:#aaa;">
+The trust of our clients remains our greatest professional value
+</p>
+
+</div>
+
+
+<div class="testimonial-grid">
+
+
+<div class="testimonial">
+
+<blockquote>
+“Professional guidance, dedicated representation and
+clear communication throughout the legal process.”
+</blockquote>
+
+<div class="testimonial-name">
+— CLIENT TESTIMONIAL
+</div>
+
+</div>
+
+
+<div class="testimonial">
+
+<blockquote>
+“Committed to understanding the matter and providing
+practical legal guidance with professionalism.”
+</blockquote>
+
+<div class="testimonial-name">
+— CLIENT TESTIMONIAL
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LEGAL AWARENESS
+===================================================== -->
+
+<section class="awareness-section" id="awareness">
+
+<div class="section-heading">
+
+<h2>
+Legal Awareness
+</h2>
+
+<p>
+Know your rights. Understand the law.
+</p>
+
+</div>
+
+
+<div class="awareness-grid">
+
+
+<div class="awareness-card">
+
+<h3>
+Know Your Property Rights
+</h3>
+
+<p>
+Understanding ownership, inheritance, possession and
+partition can help protect lawful property rights.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<h3>
+Family Legal Rights
+</h3>
+
+<p>
+Awareness of maintenance, dower, custody and other
+family-law rights can help families make informed decisions.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<h3>
+Your Constitutional Rights
+</h3>
+
+<p>
+Every citizen should understand the basic legal protections
+and remedies available under the Constitution.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LATEST UPDATES
+===================================================== -->
+
+<section class="updates-section" id="updates">
+
+<div class="section-heading">
+
+<h2>
+Latest Updates
+</h2>
+
+<p>
+News, legal developments and updates from Qureshi Law Firm
+</p>
+
+</div>
+
+
+<div class="update-list">
+
+
+<div class="update">
+
+<div class="update-date">
+FIRM UPDATE
+</div>
+
+<h3>
+Professional Legal Services
+</h3>
+
+<p>
+Qureshi Law Firm continues to provide professional legal
+research, advisory services and representation before
+competent courts.
+</p>
+
+</div>
+
+
+<div class="update">
+
+<div class="update-date">
+LEGAL AWARENESS
+</div>
+
+<h3>
+Promoting Legal Awareness
+</h3>
+
+<p>
+The firm remains committed to helping people understand
+their legal rights and available remedies.
+</p>
+
+</div>
+
+
+<div class="update">
+
+<div class="update-date">
+LEGAL UPDATE
+</div>
+
+<h3>
+Following Developments in Law
+</h3>
+
+<p>
+We continue to monitor important developments in
+legislation, case law and legal practice.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
      ABOUT
-========================= -->
+===================================================== -->
 
 <section class="about">
 
@@ -1387,9 +2411,9 @@ dedication, discretion and respect for the law.
 
 
 
-<!-- =========================
-     WHY US
-========================= -->
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
 
 <section class="why">
 
@@ -1449,22 +2473,23 @@ Honest, ethical and confidential professional service.
 
 </div>
 
+
 </div>
 
 </section>
 
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- =====================================================
+     CONTACT / APPOINTMENT
+===================================================== -->
 
 <section class="contact" id="contact">
 
 <div class="section-heading">
 
 <h2>
-Contact Qureshi Law Firm
+Contact / Appointment
 </h2>
 
 <p>
@@ -1510,15 +2535,16 @@ WHATSAPP
 
 </a>
 
+
 </div>
 
 </section>
 
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -1532,6 +2558,10 @@ QURESHI LAW FIRM
 
 <p>
 Aqeel Ahmed Qureshi | Advocate High Court
+</p>
+
+<p>
+Professional Legal Services • Advocacy • Legal Research
 </p>
 
 <p>
