@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Qureshi Law Firm | Aqeel Ahmed Qureshi</title>
+<title>Qureshi Law Firm | Aqeel Ahmed Qureshi, Advocate High Court</title>
 
 <meta name="description"
-content="Qureshi Law Firm — Professional Legal Services by Aqeel Ahmed Qureshi, Advocate High Court, Pakistan.">
+content="Qureshi Law Firm — Professional legal services by Aqeel Ahmed Qureshi, Advocate High Court, Pakistan. Civil, Family, Criminal and Constitutional Law.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="keywords"
+content="Qureshi Law Firm, Aqeel Ahmed Qureshi Advocate High Court, lawyer Pakistan, advocate Rawalpindi, advocate Taxila, civil lawyer, family lawyer, criminal lawyer, constitutional lawyer">
+
+<meta name="author"
+content="Aqeel Ahmed Qureshi, Advocate High Court">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical"
+href="https://qureshilawfirm.github.io/Qureshi-law-firm/">
+
+<!-- Open Graph / Facebook -->
+
+<meta property="og:title"
+content="Qureshi Law Firm | Aqeel Ahmed Qureshi">
+
+<meta property="og:description"
+content="Professional legal services by Aqeel Ahmed Qureshi, Advocate High Court, Pakistan.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url"
+content="https://qureshilawfirm.github.io/Qureshi-law-firm/">
+
+<meta property="og:site_name"
+content="Qureshi Law Firm">
+
+<meta property="og:image"
+content="https://qureshilawfirm.github.io/Qureshi-law-firm/IMG_20241215_212343.jpg">
+
+<!-- Fonts -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
@@ -20,6 +53,44 @@ crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
 rel="stylesheet">
+
+
+<!-- =====================================================
+     STRUCTURED DATA
+===================================================== -->
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LegalService",
+  "name":"Qureshi Law Firm",
+  "url":"https://qureshilawfirm.github.io/Qureshi-law-firm/",
+  "logo":"https://qureshilawfirm.github.io/Qureshi-law-firm/IMG_20241215_212343.jpg",
+  "image":"https://qureshilawfirm.github.io/Qureshi-law-firm/IMG_20241215_212343.jpg",
+  "description":"Professional legal services by Aqeel Ahmed Qureshi, Advocate High Court, Pakistan.",
+  "email":"infoqureshilawfirm@gmail.com",
+  "telephone":"+923088383531",
+  "sameAs":[
+    "https://www.facebook.com/share/1EarGqGVgw/"
+  ],
+  "areaServed":"Pakistan",
+  "founder":{
+    "@type":"Person",
+    "name":"Aqeel Ahmed Qureshi",
+    "jobTitle":"Advocate High Court"
+  },
+  "serviceType":[
+    "Civil Law",
+    "Family Law",
+    "Criminal Law",
+    "Constitutional Law",
+    "Legal Consultation",
+    "Civil Litigation",
+    "Family Litigation",
+    "Criminal Defence"
+  ]
+}
+</script>
 
 
 <style>
@@ -36,6 +107,7 @@ rel="stylesheet">
 
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:100px;
 }
 
 body{
@@ -54,8 +126,17 @@ a{
     text-decoration:none;
 }
 
+button{
+    font-family:inherit;
+}
+
 section{
     padding:100px 7%;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
 }
 
 .section-heading{
@@ -91,7 +172,7 @@ header{
 
     border-bottom:1px solid #333;
 
-    padding:14px 5%;
+    padding:12px 5%;
 }
 
 .header-inner{
@@ -104,7 +185,7 @@ header{
 .brand{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:14px;
 }
 
 .brand-logo{
@@ -123,28 +204,40 @@ header{
 
 .brand-title{
     font-family:'Cormorant Garamond',serif;
+
     font-size:25px;
     font-weight:700;
+
     letter-spacing:2px;
 }
 
 .brand-subtitle{
     font-size:9px;
-    letter-spacing:2px;
+
+    letter-spacing:1.5px;
+
     color:#aaa;
+
+    margin-top:-2px;
 }
 
 nav{
     display:flex;
-    gap:20px;
+
+    gap:17px;
+
     flex-wrap:wrap;
+
     justify-content:flex-end;
 }
 
 nav a{
     color:#fff;
-    font-size:10px;
+
+    font-size:9px;
+
     letter-spacing:1px;
+
     transition:.3s;
 }
 
@@ -169,6 +262,7 @@ nav a:hover{
     color:#fff;
 
     display:flex;
+
     align-items:center;
 
     padding:90px 7%;
@@ -180,8 +274,11 @@ nav a:hover{
 
 .eyebrow{
     font-size:12px;
+
     letter-spacing:5px;
+
     color:#999;
+
     margin-bottom:25px;
 }
 
@@ -223,6 +320,7 @@ nav a:hover{
     color:#fff;
 
     margin-right:8px;
+
     margin-bottom:10px;
 
     font-size:12px;
@@ -234,6 +332,7 @@ nav a:hover{
 
 .btn:hover{
     background:#fff;
+
     color:#000;
 }
 
@@ -244,9 +343,11 @@ nav a:hover{
 
 .mentor{
     background:#050505;
+
     color:#fff;
 
     position:relative;
+
     overflow:hidden;
 }
 
@@ -263,6 +364,7 @@ nav a:hover{
     border-radius:50%;
 
     top:-150px;
+
     right:-100px;
 }
 
@@ -595,7 +697,7 @@ nav a:hover{
 
 
 /* =====================================================
-   OUR TEAM
+   TEAM
 ===================================================== */
 
 .team-section{
@@ -632,6 +734,12 @@ nav a:hover{
     box-shadow:0 18px 40px rgba(0,0,0,.12);
 }
 
+.team-icon{
+    font-size:35px;
+
+    margin-bottom:15px;
+}
+
 .team-card h3{
     font-family:'Cormorant Garamond',serif;
 
@@ -658,7 +766,7 @@ nav a:hover{
 
 
 /* =====================================================
-   OUR CASES
+   CASES
 ===================================================== */
 
 .cases-section{
@@ -725,7 +833,7 @@ nav a:hover{
 
 
 /* =====================================================
-   LEGAL ARTICLES
+   ARTICLES
 ===================================================== */
 
 .articles-section{
@@ -760,6 +868,16 @@ nav a:hover{
     transform:translateY(-6px);
 }
 
+.article-tag{
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#888;
+
+    margin-bottom:10px;
+}
+
 .article-card h3{
     font-family:'Cormorant Garamond',serif;
 
@@ -776,7 +894,7 @@ nav a:hover{
 
 
 /* =====================================================
-   COURT ACHIEVEMENTS
+   ACHIEVEMENTS
 ===================================================== */
 
 .achievements-section{
@@ -909,6 +1027,14 @@ nav a:hover{
     padding:32px 25px;
 
     border-top:3px solid #000;
+
+    transition:.3s;
+}
+
+.awareness-card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
 }
 
 .awareness-card h3{
@@ -1050,7 +1176,7 @@ nav a:hover{
 
 
 /* =====================================================
-   CONTACT / APPOINTMENT
+   CONTACT
 ===================================================== */
 
 .contact{
@@ -1060,7 +1186,7 @@ nav a:hover{
 }
 
 .contact-box{
-    max-width:800px;
+    max-width:850px;
 
     margin:auto;
 
@@ -1085,6 +1211,10 @@ nav a:hover{
     margin:5px 0;
 }
 
+.contact-buttons{
+    margin-top:20px;
+}
+
 .contact-btn{
     display:inline-block;
 
@@ -1094,7 +1224,7 @@ nav a:hover{
 
     padding:14px 28px;
 
-    margin:25px 5px 0;
+    margin:8px 5px 0;
 
     font-size:12px;
 
@@ -1105,6 +1235,26 @@ nav a:hover{
 
 .contact-btn:hover{
     background:#333;
+}
+
+.contact-btn.light{
+    background:#fff;
+
+    color:#000;
+
+    border:1px solid #000;
+}
+
+.contact-btn.light:hover{
+    background:#000;
+
+    color:#fff;
+}
+
+.email{
+    margin-top:18px !important;
+
+    font-weight:500;
 }
 
 
@@ -1154,19 +1304,37 @@ footer p{
     margin-top:7px;
 }
 
+.footer-links{
+    margin-top:20px;
+}
+
+.footer-links a{
+    color:#aaa;
+
+    margin:0 8px;
+
+    font-size:11px;
+
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
 
 /* =====================================================
    MOBILE
 ===================================================== */
 
-@media(max-width:1000px){
+@media(max-width:1100px){
 
     nav{
         gap:12px;
     }
 
     nav a{
-        font-size:9px;
+        font-size:8px;
     }
 
     .services{
@@ -1199,6 +1367,7 @@ footer p{
 
     .header-inner{
         flex-direction:column;
+
         align-items:center;
     }
 
@@ -1265,7 +1434,7 @@ footer p{
     }
 
     .brand-subtitle{
-        font-size:8px;
+        font-size:7px;
     }
 
     .brand-logo{
@@ -1278,13 +1447,13 @@ footer p{
 
         width:100%;
 
-        gap:10px 15px;
+        gap:9px 13px;
 
         justify-content:center;
     }
 
     nav a{
-        font-size:8px;
+        font-size:7px;
     }
 
     .hero{
@@ -1305,6 +1474,7 @@ footer p{
 
     .mentor-photo img{
         width:220px;
+
         height:270px;
     }
 
@@ -1318,6 +1488,7 @@ footer p{
 
     .principal-photo img{
         width:220px;
+
         height:285px;
     }
 
@@ -1411,9 +1582,9 @@ AQEEL AHMED QURESHI | ADVOCATE HIGH COURT
 
 <a href="#services">SERVICES</a>
 
-<a href="#team">OUR TEAM</a>
+<a href="#team">TEAM</a>
 
-<a href="#cases">OUR CASES</a>
+<a href="#cases">CASES</a>
 
 <a href="#articles">ARTICLES</a>
 
@@ -1480,7 +1651,6 @@ OUR LEGAL SERVICES
 
 <div class="mentor-inner">
 
-
 <div class="mentor-photo">
 
 <img
@@ -1509,9 +1679,14 @@ Our Esteemed Mentor
 </h2>
 
 <blockquote>
-“With deep gratitude and respect, we dedicated this work
-to our esteemed teacher, Sir RAFAQAT HUSSAIN SHAH ADVOCATE.”
+“With deep gratitude and respect, we dedicate this work
+to our esteemed teacher, Sir Rafaqat Hussain Shah Advocate.”
 </blockquote>
+
+<div class="dedication">
+A teacher leaves a lasting imprint not only through
+knowledge, but through character, principles and example.
+</div>
 
 </div>
 
@@ -1522,7 +1697,7 @@ to our esteemed teacher, Sir RAFAQAT HUSSAIN SHAH ADVOCATE.”
 
 
 <!-- =====================================================
-     PRINCIPAL ADVOCATE
+     PRINCIPAL
 ===================================================== -->
 
 <section class="principal" id="principal">
@@ -1541,7 +1716,6 @@ Leadership grounded in law, integrity and justice
 
 
 <div class="principal-grid">
-
 
 <div class="principal-photo">
 
@@ -1629,7 +1803,6 @@ Professional legal representation and advisory services
 
 
 <div class="services">
-
 
 <div class="service">
 
@@ -1729,7 +1902,6 @@ Focused legal expertise across major areas of practice
 
 <div class="specialist-grid">
 
-
 <div class="specialist">
 
 <div class="specialist-icon">
@@ -1823,8 +1995,8 @@ Our Team
 </h2>
 
 <p>
-Dedicated professionals supporting the legal practice
-of Qureshi Law Firm
+A professional legal team committed to responsible
+and dedicated legal service.
 </p>
 
 </div>
@@ -1832,19 +2004,23 @@ of Qureshi Law Firm
 
 <div class="team-grid">
 
-
 <div class="team-card">
 
+<div class="team-icon">
+⚖
+</div>
+
 <h3>
-Sarfraz Khan
+Aqeel Ahmed Qureshi
 </h3>
 
 <div class="designation">
-ADVOCATE HIGH COURT
+ADVOCATE HIGH COURT • PRINCIPAL ADVOCATE
 </div>
 
 <p>
-Banking & Financial Matters Advisor
+Leading Qureshi Law Firm with a commitment to
+professional advocacy, legal ethics and justice.
 </p>
 
 </div>
@@ -1852,16 +2028,21 @@ Banking & Financial Matters Advisor
 
 <div class="team-card">
 
+<div class="team-icon">
+§
+</div>
+
 <h3>
-Affan Awais
+Legal Associates
 </h3>
 
 <div class="designation">
-ADVOCATE HIGH COURT
+LEGAL RESEARCH & CASE SUPPORT
 </div>
 
 <p>
-Family Matters Advisor / Researcher
+Supporting legal research, preparation, documentation
+and professional case management.
 </p>
 
 </div>
@@ -1869,54 +2050,24 @@ Family Matters Advisor / Researcher
 
 <div class="team-card">
 
+<div class="team-icon">
+◆
+</div>
+
 <h3>
-Tariq Ali Khan
+Legal Support
 </h3>
 
 <div class="designation">
-ADVOCATE HIGH COURT
+CLIENT COORDINATION & ADMINISTRATION
 </div>
 
 <p>
-Legal Advisory & Professional Support
+Helping ensure organized communication and efficient
+coordination with clients.
 </p>
 
 </div>
-
-
-<div class="team-card">
-
-<h3>
-Waheed Ellahi
-</h3>
-
-<div class="designation">
-ADVOCATE HIGH COURT
-</div>
-
-<p>
-Mediator
-</p>
-
-</div>
-
-
-<div class="team-card">
-
-<h3>
-Syed Qasim Raza
-</h3>
-
-<div class="designation">
-ADVOCATE
-</div>
-
-<p>
-Criminal Matters Advisor / Researcher
-</p>
-
-</div>
-
 
 </div>
 
@@ -1937,7 +2088,7 @@ Our Cases / Case Studies
 </h2>
 
 <p style="color:#aaa;">
-Selected areas of legal representation and case experience
+Selected areas of legal work and representative case studies.
 </p>
 
 </div>
@@ -1953,12 +2104,13 @@ CASE STUDY 01
 </div>
 
 <h3>
-Civil & Property Litigation
+Property & Partition Disputes
 </h3>
 
 <p>
-Representation in property disputes, partition matters,
-injunctions, declarations and other civil litigation.
+Legal representation concerning ownership,
+partition, possession, injunctions and related
+property disputes.
 </p>
 
 </div>
@@ -1975,8 +2127,8 @@ Family Litigation
 </h3>
 
 <p>
-Legal representation and advisory services concerning
-maintenance, dower, custody, guardianship and family disputes.
+Representation in maintenance, dower, custody,
+guardianship and other family-related legal matters.
 </p>
 
 </div>
@@ -1993,8 +2145,8 @@ Criminal Defence
 </h3>
 
 <p>
-Professional representation in criminal proceedings,
-bail matters, trials and related legal proceedings.
+Professional representation in bail, trial,
+criminal defence and related proceedings.
 </p>
 
 </div>
@@ -2007,16 +2159,16 @@ CASE STUDY 04
 </div>
 
 <h3>
-Constitutional Matters
+Constitutional Petitions
 </h3>
 
 <p>
-Constitutional petitions, writ jurisdiction and protection
-of fundamental and legal rights before competent courts.
+Legal assistance in constitutional matters,
+writ jurisdiction and protection of fundamental
+legal rights before the High Court.
 </p>
 
 </div>
-
 
 </div>
 
@@ -2037,7 +2189,7 @@ Legal Articles
 </h2>
 
 <p>
-Legal knowledge explained in a clear and practical manner
+Legal information and practical guidance for citizens.
 </p>
 
 </div>
@@ -2048,13 +2200,17 @@ Legal knowledge explained in a clear and practical manner
 
 <div class="article-card">
 
+<div class="article-tag">
+LEGAL AWARENESS
+</div>
+
 <h3>
-Understanding Property Rights
+Understanding Your Legal Rights
 </h3>
 
 <p>
-An introduction to important legal principles concerning
-ownership, possession and property disputes.
+Every citizen should understand the basic legal rights
+available under the Constitution and applicable laws.
 </p>
 
 </div>
@@ -2062,13 +2218,17 @@ ownership, possession and property disputes.
 
 <div class="article-card">
 
+<div class="article-tag">
+CIVIL LAW
+</div>
+
 <h3>
-Partition of Property
+Property & Partition Matters
 </h3>
 
 <p>
-Understanding the basic legal framework governing partition
-of jointly owned immovable property.
+An overview of important legal considerations in
+property ownership, partition and possession disputes.
 </p>
 
 </div>
@@ -2076,17 +2236,74 @@ of jointly owned immovable property.
 
 <div class="article-card">
 
+<div class="article-tag">
+FAMILY LAW
+</div>
+
 <h3>
-Fundamental Legal Rights
+Maintenance & Family Rights
 </h3>
 
 <p>
-A simple overview of fundamental rights and available legal
-remedies under the Constitution.
+Understanding legal rights and responsibilities in
+family-related disputes and maintenance matters.
 </p>
 
 </div>
 
+
+<div class="article-card">
+
+<div class="article-tag">
+CRIMINAL LAW
+</div>
+
+<h3>
+Know Your Rights During Criminal Proceedings
+</h3>
+
+<p>
+Basic legal awareness regarding criminal proceedings,
+legal representation and due process.
+</p>
+
+</div>
+
+
+<div class="article-card">
+
+<div class="article-tag">
+CONSTITUTIONAL LAW
+</div>
+
+<h3>
+Fundamental Rights & Constitutional Protection
+</h3>
+
+<p>
+Why constitutional rights matter and how legal remedies
+may become available when rights are affected.
+</p>
+
+</div>
+
+
+<div class="article-card">
+
+<div class="article-tag">
+LEGAL AWARENESS
+</div>
+
+<h3>
+Why Legal Advice Matters
+</h3>
+
+<p>
+Timely and accurate legal advice can help individuals
+understand their options before taking legal action.
+</p>
+
+</div>
 
 </div>
 
@@ -2107,7 +2324,8 @@ Court Achievements
 </h2>
 
 <p>
-Professional advocacy and commitment to our clients
+Professional advocacy grounded in preparation,
+legal research and commitment.
 </p>
 
 </div>
@@ -2123,12 +2341,12 @@ Professional advocacy and commitment to our clients
 </div>
 
 <h3>
-High Court Advocacy
+Strong Advocacy
 </h3>
 
 <p>
-Representation before the High Court in constitutional,
-civil and other legal matters.
+Dedicated representation with careful preparation
+of legal matters.
 </p>
 
 </div>
@@ -2141,12 +2359,12 @@ civil and other legal matters.
 </div>
 
 <h3>
-Civil Litigation
+Legal Research
 </h3>
 
 <p>
-Dedicated representation in complex civil and property
-disputes.
+Focused study of applicable laws, precedents and
+the facts of each matter.
 </p>
 
 </div>
@@ -2159,16 +2377,15 @@ disputes.
 </div>
 
 <h3>
-Legal Research
+Client Commitment
 </h3>
 
 <p>
-Focused legal research and preparation to support effective
-court representation.
+Professional attention to clients and their lawful
+rights and interests.
 </p>
 
 </div>
-
 
 </div>
 
@@ -2177,7 +2394,7 @@ court representation.
 
 
 <!-- =====================================================
-     CLIENT TESTIMONIALS
+     TESTIMONIALS
 ===================================================== -->
 
 <section class="testimonials-section" id="testimonials">
@@ -2189,7 +2406,7 @@ Client Testimonials
 </h2>
 
 <p style="color:#aaa;">
-The trust of our clients remains our greatest professional value
+Client feedback and professional experiences.
 </p>
 
 </div>
@@ -2201,12 +2418,12 @@ The trust of our clients remains our greatest professional value
 <div class="testimonial">
 
 <blockquote>
-“Professional guidance, dedicated representation and
-clear communication throughout the legal process.”
+“Professional guidance, clear communication and
+dedicated attention to the legal matter.”
 </blockquote>
 
 <div class="testimonial-name">
-— CLIENT TESTIMONIAL
+CLIENT FEEDBACK
 </div>
 
 </div>
@@ -2215,16 +2432,15 @@ clear communication throughout the legal process.”
 <div class="testimonial">
 
 <blockquote>
-“Committed to understanding the matter and providing
-practical legal guidance with professionalism.”
+“Legal issues were explained in a clear and practical
+manner, making the process easier to understand.”
 </blockquote>
 
 <div class="testimonial-name">
-— CLIENT TESTIMONIAL
+CLIENT FEEDBACK
 </div>
 
 </div>
-
 
 </div>
 
@@ -2245,7 +2461,7 @@ Legal Awareness
 </h2>
 
 <p>
-Know your rights. Understand the law.
+Know the law. Understand your rights. Protect your future.
 </p>
 
 </div>
@@ -2257,12 +2473,12 @@ Know your rights. Understand the law.
 <div class="awareness-card">
 
 <h3>
-Know Your Property Rights
+Know Your Rights
 </h3>
 
 <p>
-Understanding ownership, inheritance, possession and
-partition can help protect lawful property rights.
+Legal awareness helps citizens understand their rights,
+responsibilities and available remedies.
 </p>
 
 </div>
@@ -2271,12 +2487,13 @@ partition can help protect lawful property rights.
 <div class="awareness-card">
 
 <h3>
-Family Legal Rights
+Do Not Ignore Legal Notices
 </h3>
 
 <p>
-Awareness of maintenance, dower, custody and other
-family-law rights can help families make informed decisions.
+A legal notice or court document should not be ignored.
+Seek appropriate legal advice and understand the deadline
+and legal implications.
 </p>
 
 </div>
@@ -2285,16 +2502,57 @@ family-law rights can help families make informed decisions.
 <div class="awareness-card">
 
 <h3>
-Your Constitutional Rights
+Keep Your Documents Safe
 </h3>
 
 <p>
-Every citizen should understand the basic legal protections
-and remedies available under the Constitution.
+Important property, family, financial and legal documents
+should be preserved carefully for future reference.
 </p>
 
 </div>
 
+
+<div class="awareness-card">
+
+<h3>
+Seek Timely Legal Advice
+</h3>
+
+<p>
+Early legal consultation can help identify available
+options and prevent avoidable complications.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<h3>
+Respect the Rule of Law
+</h3>
+
+<p>
+A strong society depends upon equality before law,
+due process and respect for lawful rights.
+</p>
+
+</div>
+
+
+<div class="awareness-card">
+
+<h3>
+Justice Through Awareness
+</h3>
+
+<p>
+Qureshi Law Firm believes that legal awareness is an
+important part of building a responsible society.
+</p>
+
+</div>
 
 </div>
 
@@ -2315,7 +2573,8 @@ Latest Updates
 </h2>
 
 <p>
-News, legal developments and updates from Qureshi Law Firm
+News, legal awareness initiatives and updates from
+Qureshi Law Firm.
 </p>
 
 </div>
@@ -2327,17 +2586,16 @@ News, legal developments and updates from Qureshi Law Firm
 <div class="update">
 
 <div class="update-date">
-FIRM UPDATE
+2026
 </div>
 
 <h3>
-Professional Legal Services
+Qureshi Law Firm Official Website
 </h3>
 
 <p>
-Qureshi Law Firm continues to provide professional legal
-research, advisory services and representation before
-competent courts.
+Our official website provides information about our
+legal services, practice areas and legal awareness work.
 </p>
 
 </div>
@@ -2350,12 +2608,12 @@ LEGAL AWARENESS
 </div>
 
 <h3>
-Promoting Legal Awareness
+Promoting Public Legal Awareness
 </h3>
 
 <p>
-The firm remains committed to helping people understand
-their legal rights and available remedies.
+We aim to make useful legal information more accessible
+to members of the public.
 </p>
 
 </div>
@@ -2364,20 +2622,19 @@ their legal rights and available remedies.
 <div class="update">
 
 <div class="update-date">
-LEGAL UPDATE
+LATEST
 </div>
 
 <h3>
-Following Developments in Law
+Professional Legal Consultation
 </h3>
 
 <p>
-We continue to monitor important developments in
-legislation, case law and legal practice.
+For legal consultation or professional representation,
+contact Qureshi Law Firm through the appointment section.
 </p>
 
 </div>
-
 
 </div>
 
@@ -2389,7 +2646,7 @@ legislation, case law and legal practice.
      ABOUT
 ===================================================== -->
 
-<section class="about">
+<section class="about" id="about">
 
 <div class="about-content">
 
@@ -2412,10 +2669,10 @@ dedication, discretion and respect for the law.
 
 
 <!-- =====================================================
-     WHY CHOOSE US
+     WHY US
 ===================================================== -->
 
-<section class="why">
+<section class="why" id="why">
 
 <div class="section-heading">
 
@@ -2473,7 +2730,6 @@ Honest, ethical and confidential professional service.
 
 </div>
 
-
 </div>
 
 </section>
@@ -2493,7 +2749,7 @@ Contact / Appointment
 </h2>
 
 <p>
-For legal consultation and professional representation
+For legal consultation and professional representation.
 </p>
 
 </div>
@@ -2517,24 +2773,47 @@ Principal Advocate — Qureshi Law Firm
 Pakistan
 </p>
 
+<p class="email">
+Email:
+infoqureshilawfirm@gmail.com
+</p>
+
+
+<div class="contact-buttons">
+
 
 <a
 class="contact-btn"
 href="tel:+923088383531">
-
 CALL NOW
-
 </a>
 
 
 <a
 class="contact-btn"
-href="https://wa.me/923088383531">
-
+href="https://wa.me/923088383531"
+target="_blank"
+rel="noopener">
 WHATSAPP
-
 </a>
 
+
+<a
+class="contact-btn light"
+href="mailto:infoqureshilawfirm@gmail.com">
+EMAIL
+</a>
+
+
+<a
+class="contact-btn light"
+href="https://www.facebook.com/share/1EarGqGVgw/"
+target="_blank"
+rel="noopener">
+FACEBOOK
+</a>
+
+</div>
 
 </div>
 
@@ -2561,7 +2840,41 @@ Aqeel Ahmed Qureshi | Advocate High Court
 </p>
 
 <p>
-Professional Legal Services • Advocacy • Legal Research
+Professional Legal Services • Justice • Integrity
+</p>
+
+
+<div class="footer-links">
+
+<a href="#home">
+HOME
+</a>
+
+<a href="#services">
+SERVICES
+</a>
+
+<a href="#cases">
+CASES
+</a>
+
+<a href="#articles">
+ARTICLES
+</a>
+
+<a href="#awareness">
+AWARENESS
+</a>
+
+<a href="#contact">
+CONTACT
+</a>
+
+</div>
+
+
+<p style="margin-top:25px;">
+Email: infoqureshilawfirm@gmail.com
 </p>
 
 <p>
@@ -2572,4 +2885,5 @@ Professional Legal Services • Advocacy • Legal Research
 
 
 </body>
+
 </html>
