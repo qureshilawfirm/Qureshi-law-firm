@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Qureshi Law Firm | Admin Panel</title>
 
+<meta name="theme-color" content="#000000">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -16,407 +33,1610 @@
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
+    font-family:'Montserrat',Arial,sans-serif;
+    background:#f3f3f3;
     color:#111;
 }
 
-header{
-    background:#000;
-    color:#fff;
-    padding:18px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-header h1{
-    font-family:Georgia,serif;
-    font-size:25px;
-}
-
-.logout{
-    background:#fff;
-    color:#000;
-    border:0;
-    padding:9px 16px;
-    cursor:pointer;
-}
-
-.login{
-    max-width:420px;
-    margin:100px auto;
-    background:#fff;
-    padding:35px;
-    box-shadow:0 10px 30px #0002;
-}
-
-.login h2{
-    margin-bottom:25px;
-    font-family:Georgia,serif;
-}
-
-input,select,textarea{
-    width:100%;
-    padding:12px;
-    margin:7px 0 15px;
-    border:1px solid #ccc;
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
 }
 
 button{
     cursor:pointer;
 }
 
-.login button,
-.action{
-    background:#000;
-    color:#fff;
-    border:0;
-    padding:12px 18px;
-}
 
-.dashboard{
-    display:none;
-}
+/* =========================
+   LOGIN
+========================= */
 
-nav{
-    background:#111;
-    padding:12px;
+#loginScreen{
+    min-height:100vh;
+
     display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+
+    background:#050505;
 }
 
-nav button{
-    background:#222;
-    color:#fff;
-    border:1px solid #444;
-    padding:10px 15px;
-}
+.login-box{
+    width:100%;
 
-nav button:hover{
+    max-width:430px;
+
     background:#fff;
+
+    padding:45px 35px;
+
+    border:1px solid #333;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+
+    text-align:center;
+}
+
+.login-logo{
+    width:85px;
+    height:85px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    border:3px solid #111;
+
+    padding:5px;
+
+    margin:0 auto 20px;
+}
+
+.login-box h1{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:42px;
+
+    line-height:1;
+
+    margin-bottom:8px;
+}
+
+.login-box .subtitle{
+    color:#777;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:30px;
+}
+
+.field{
+    margin-bottom:18px;
+
+    text-align:left;
+}
+
+.field label{
+    display:block;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    margin-bottom:7px;
+
+    color:#555;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+
+    padding:13px 14px;
+
+    border:1px solid #bbb;
+
+    background:#fff;
+
+    color:#111;
+
+    outline:none;
+
+    border-radius:0;
+}
+
+.field textarea{
+    min-height:110px;
+
+    resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#000;
+}
+
+.primary-btn{
+    width:100%;
+
+    padding:14px;
+
+    background:#000;
+
+    color:#fff;
+
+    border:1px solid #000;
+
+    font-size:11px;
+
+    letter-spacing:1.5px;
+
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    background:#333;
+}
+
+.error{
+    color:#b00020;
+
+    font-size:12px;
+
+    margin-top:15px;
+
+    min-height:18px;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+#app{
+    display:none;
+
+    min-height:100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar{
+    height:72px;
+
+    background:#000;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+}
+
+.topbar-left{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.topbar-logo{
+    width:45px;
+    height:45px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    padding:3px;
+}
+
+.topbar-title{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:27px;
+
+    letter-spacing:2px;
+}
+
+.topbar-user{
+    color:#aaa;
+
+    font-size:10px;
+
+    margin-left:5px;
+}
+
+.logout-btn{
+    background:#fff;
+
+    color:#000;
+
+    border:0;
+
+    padding:10px 16px;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+.logout-btn:hover{
+    background:#ddd;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+    display:flex;
+
+    min-height:calc(100vh - 72px);
+}
+
+.sidebar{
+    width:245px;
+
+    background:#080808;
+
+    color:#fff;
+
+    padding:25px 15px;
+
+    flex-shrink:0;
+}
+
+.sidebar-title{
+    color:#777;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    padding:0 12px 12px;
+}
+
+.side-btn{
+    width:100%;
+
+    background:transparent;
+
+    border:0;
+
+    color:#aaa;
+
+    text-align:left;
+
+    padding:13px 12px;
+
+    margin-bottom:3px;
+
+    font-size:11px;
+
+    letter-spacing:.5px;
+
+    transition:.25s;
+}
+
+.side-btn:hover,
+.side-btn.active{
+    background:#fff;
+
     color:#000;
 }
 
-.container{
-    max-width:1250px;
-    margin:auto;
-    padding:25px;
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    flex:1;
+
+    padding:35px;
+
+    overflow:hidden;
 }
 
-.card{
-    background:#fff;
-    padding:25px;
-    margin-bottom:20px;
-    box-shadow:0 5px 20px #0001;
+.page{
+    display:none;
 }
+
+.page.active{
+    display:block;
+}
+
+.page-heading{
+    margin-bottom:30px;
+}
+
+.page-heading h1{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:48px;
+
+    line-height:1;
+}
+
+.page-heading p{
+    color:#777;
+
+    font-size:12px;
+
+    margin-top:8px;
+}
+
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
 
 .stats{
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
+
+    gap:18px;
+
+    margin-bottom:30px;
 }
 
 .stat{
-    background:#000;
-    color:#fff;
+    background:#fff;
+
+    border:1px solid #ddd;
+
     padding:25px;
+
+    position:relative;
 }
 
-.stat strong{
-    display:block;
-    font-size:30px;
+.stat-number{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:48px;
+
+    line-height:1;
+}
+
+.stat-label{
+    color:#777;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+
     margin-top:8px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-box{
+    background:#fff;
+
+    border:1px solid #ddd;
+
+    overflow:auto;
+}
+
+.table-head{
+    padding:18px 20px;
+
+    border-bottom:1px solid #ddd;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.table-head h2{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+}
+
+.small-btn{
+    background:#000;
+
+    color:#fff;
+
+    border:0;
+
+    padding:10px 15px;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+.small-btn:hover{
+    background:#333;
 }
 
 table{
     width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-}
 
-th,td{
-    padding:12px;
-    border-bottom:1px solid #ddd;
-    text-align:left;
-    font-size:13px;
+    border-collapse:collapse;
+
+    min-width:700px;
 }
 
 th{
-    background:#111;
+    background:#080808;
+
     color:#fff;
+
+    text-align:left;
+
+    padding:12px;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    white-space:nowrap;
+}
+
+td{
+    border-bottom:1px solid #eee;
+
+    padding:12px;
+
+    font-size:12px;
+
+    vertical-align:top;
+}
+
+tr:hover td{
+    background:#fafafa;
 }
 
 .status{
-    padding:5px 8px;
-    background:#eee;
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border:1px solid #ccc;
+
+    font-size:9px;
+
+    letter-spacing:.5px;
 }
 
-.message{
-    margin:15px 0;
-    padding:12px;
+.action-btn{
+    border:1px solid #111;
+
+    background:#fff;
+
+    color:#111;
+
+    padding:6px 9px;
+
+    font-size:9px;
+
+    margin:2px;
+}
+
+.action-btn:hover{
+    background:#000;
+
+    color:#fff;
+}
+
+
+/* =========================
+   FORM PANEL
+========================= */
+
+.form-box{
+    background:#fff;
+
+    border:1px solid #ddd;
+
+    padding:30px;
+
+    max-width:850px;
+}
+
+.form-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+}
+
+.form-full{
+    grid-column:1 / -1;
+}
+
+.form-actions{
+    margin-top:20px;
+
+    display:flex;
+
+    gap:10px;
+}
+
+.form-actions button{
+    width:auto;
+
+    padding-left:25px;
+
+    padding-right:25px;
+}
+
+.cancel-btn{
+    background:#fff;
+
+    color:#000;
+
+    border:1px solid #111;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message-box{
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    z-index:1000;
+
+    background:#000;
+
+    color:#fff;
+
+    padding:15px 20px;
+
+    font-size:12px;
+
     display:none;
+
+    max-width:350px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-.success{
-    background:#dff5e4;
-    color:#145c2b;
+.message-box.show{
+    display:block;
 }
 
-.error{
-    background:#ffe1e1;
-    color:#8b0000;
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+    padding:30px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:12px;
 }
 
-@media(max-width:800px){
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
     .stats{
         grid-template-columns:1fr 1fr;
     }
 
-    table{
-        display:block;
-        overflow-x:auto;
+    .sidebar{
+        width:210px;
     }
+
 }
+
+@media(max-width:750px){
+
+    .topbar{
+        padding:0 12px;
+    }
+
+    .topbar-title{
+        font-size:21px;
+    }
+
+    .topbar-user{
+        display:none;
+    }
+
+    .layout{
+        display:block;
+    }
+
+    .sidebar{
+        width:100%;
+
+        display:flex;
+
+        overflow-x:auto;
+
+        padding:8px;
+    }
+
+    .sidebar-title{
+        display:none;
+    }
+
+    .side-btn{
+        width:auto;
+
+        white-space:nowrap;
+
+        margin:0 3px;
+
+        padding:10px 12px;
+    }
+
+    .content{
+        padding:20px 12px;
+    }
+
+    .page-heading h1{
+        font-size:40px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+
+        gap:10px;
+    }
+
+    .stat{
+        padding:18px;
+    }
+
+    .stat-number{
+        font-size:38px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-full{
+        grid-column:auto;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .login-box{
+        padding:35px 22px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<header>
-    <h1>QURESHI LAW FIRM — ADMIN</h1>
-    <button class="logout" onclick="logout()">Logout</button>
-</header>
 
-<!-- LOGIN -->
+<!-- =====================================================
+     LOGIN SCREEN
+===================================================== -->
 
-<div id="loginBox" class="login">
+<div id="loginScreen">
 
-<h2>Admin Login</h2>
+    <div class="login-box">
 
-<input
-    type="email"
-    id="email"
-    placeholder="Admin Email"
->
+        <img
+        class="login-logo"
+        src="IMG_20241215_212343.jpg"
+        alt="Qureshi Law Firm">
 
-<input
-    type="password"
-    id="password"
-    placeholder="Password"
->
+        <h1>Admin Panel</h1>
 
-<button onclick="login()">
-    Login
-</button>
+        <div class="subtitle">
+            QURESHI LAW FIRM
+        </div>
 
-<div id="loginMessage" class="message"></div>
+        <form id="loginForm">
+
+            <div class="field">
+
+                <label>Email</label>
+
+                <input
+                id="loginEmail"
+                type="email"
+                value="infoqureshilawfirm@gmail.com"
+                required>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Password</label>
+
+                <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter password"
+                required>
+
+            </div>
+
+
+            <button
+            class="primary-btn"
+            type="submit">
+
+                LOGIN TO ADMIN PANEL
+
+            </button>
+
+        </form>
+
+
+        <div
+        id="loginError"
+        class="error">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADMIN APP
+===================================================== -->
+
+<div id="app">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <img
+            class="topbar-logo"
+            src="IMG_20241215_212343.jpg"
+            alt="Logo">
+
+            <div>
+
+                <div class="topbar-title">
+                    QURESHI LAW FIRM
+                </div>
+
+                <div class="topbar-user"
+                id="adminEmail">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+        class="logout-btn"
+        id="logoutBtn">
+
+            LOGOUT
+
+        </button>
+
+    </header>
+
+
+
+    <div class="layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                ADMINISTRATION
+            </div>
+
+
+            <button
+            class="side-btn active"
+            data-page="dashboard">
+
+                DASHBOARD
+
+            </button>
+
+
+            <button
+            class="side-btn"
+            data-page="appointments">
+
+                APPOINTMENTS
+
+            </button>
+
+
+            <button
+            class="side-btn"
+            data-page="consultations">
+
+                CONSULTATIONS
+
+            </button>
+
+
+            <button
+            class="side-btn"
+            data-page="cases">
+
+                CASES
+
+            </button>
+
+
+            <button
+            class="side-btn"
+            data-page="updates">
+
+                CASE UPDATES
+
+            </button>
+
+
+            <button
+            class="side-btn"
+            data-page="profiles">
+
+                CLIENT PROFILES
+
+            </button>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="content">
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <section
+            id="page-dashboard"
+            class="page active">
+
+                <div class="page-heading">
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Qureshi Law Firm administration overview.
+                    </p>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+
+                        <div
+                        class="stat-number"
+                        id="statAppointments">
+                        0
+                        </div>
+
+                        <div class="stat-label">
+                            APPOINTMENTS
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div
+                        class="stat-number"
+                        id="statConsultations">
+                        0
+                        </div>
+
+                        <div class="stat-label">
+                            CONSULTATIONS
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div
+                        class="stat-number"
+                        id="statCases">
+                        0
+                        </div>
+
+                        <div class="stat-label">
+                            CASES
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div
+                        class="stat-number"
+                        id="statClients">
+                        0
+                        </div>
+
+                        <div class="stat-label">
+                            CLIENT PROFILES
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-box">
+
+                    <div class="table-head">
+
+                        <h2>
+                            Recent Appointments
+                        </h2>
+
+                        <button
+                        class="small-btn"
+                        onclick="showPage('appointments')">
+
+                            VIEW ALL
+
+                        </button>
+
+                    </div>
+
+                    <div
+                    id="recentAppointments"
+                    class="loading">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= APPOINTMENTS ================= -->
+
+            <section
+            id="page-appointments"
+            class="page">
+
+                <div class="page-heading">
+
+                    <h1>
+                        Appointments
+                    </h1>
+
+                    <p>
+                        Manage client appointment requests.
+                    </p>
+
+                </div>
+
+
+                <div class="table-box">
+
+                    <div class="table-head">
+
+                        <h2>
+                            All Appointments
+                        </h2>
+
+                        <button
+                        class="small-btn"
+                        onclick="loadAppointments()">
+
+                            REFRESH
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="appointmentsTable"
+                    class="loading">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= CONSULTATIONS ================= -->
+
+            <section
+            id="page-consultations"
+            class="page">
+
+                <div class="page-heading">
+
+                    <h1>
+                        Consultations
+                    </h1>
+
+                    <p>
+                        Manage online legal consultation requests.
+                    </p>
+
+                </div>
+
+
+                <div class="table-box">
+
+                    <div class="table-head">
+
+                        <h2>
+                            Consultation Requests
+                        </h2>
+
+                        <button
+                        class="small-btn"
+                        onclick="loadConsultations()">
+
+                            REFRESH
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                    id="consultationsTable"
+                    class="loading">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= CASES ================= -->
+
+            <section
+            id="page-cases"
+            class="page">
+
+                <div class="page-heading">
+
+                    <h1>
+                        Cases
+                    </h1>
+
+                    <p>
+                        Create and manage client cases.
+                    </p>
+
+                </div>
+
+
+                <div class="form-box">
+
+                    <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:30px;margin-bottom:20px;">
+
+                        Add New Case
+
+                    </h2>
+
+
+                    <form id="caseForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="field">
+
+                                <label>
+                                    Client UUID
+                                </label>
+
+                                <input
+                                id="caseClientId"
+                                type="text"
+                                placeholder="Client profile UUID"
+                                required>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Case Number
+                                </label>
+
+                                <input
+                                id="caseNumber"
+                                type="text"
+                                placeholder="e.g. W.P. No. 123/2026"
+                                required>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Court
+                                </label>
+
+                                <input
+                                id="caseCourt"
+                                type="text"
+                                placeholder="Court">
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Case Type
+                                </label>
+
+                                <select id="caseType">
+
+                                    <option value="">
+                                        Select Type
+                                    </option>
+
+                                    <option>
+                                        Civil
+                                    </option>
+
+                                    <option>
+                                        Family
+                                    </option>
+
+                                    <option>
+                                        Criminal
+                                    </option>
+
+                                    <option>
+                                        Constitutional
+                                    </option>
+
+                                    <option>
+                                        Writ
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Case Title
+                                </label>
+
+                                <input
+                                id="caseTitle"
+                                type="text"
+                                placeholder="Case title">
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Status
+                                </label>
+
+                                <select id="caseStatus">
+
+                                    <option>
+                                        Ongoing
+                                    </option>
+
+                                    <option>
+                                        Pending
+                                    </option>
+
+                                    <option>
+                                        Decided
+                                    </option>
+
+                                    <option>
+                                        Disposed
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Next Hearing
+                                </label>
+
+                                <input
+                                id="caseHearing"
+                                type="date">
+
+                            </div>
+
+
+                            <div class="field form-full">
+
+                                <label>
+                                    Description
+                                </label>
+
+                                <textarea
+                                id="caseDescription"
+                                placeholder="Case description"></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                            class="primary-btn"
+                            type="submit">
+
+                                CREATE CASE
+
+                            </button>
+
+                            <button
+                            class="primary-btn cancel-btn"
+                            type="reset">
+
+                                CLEAR
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <br>
+
+
+                <div class="table-box">
+
+                    <div class="table-head">
+
+                        <h2>
+                            Existing Cases
+                        </h2>
+
+                        <button
+                        class="small-btn"
+                        onclick="loadCases()">
+
+                            REFRESH
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                    id="casesTable"
+                    class="loading">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= CASE UPDATES ================= -->
+
+            <section
+            id="page-updates"
+            class="page">
+
+                <div class="page-heading">
+
+                    <h1>
+                        Case Updates
+                    </h1>
+
+                    <p>
+                        Add hearing dates and progress updates.
+                    </p>
+
+                </div>
+
+
+                <div class="form-box">
+
+                    <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:30px;margin-bottom:20px;">
+
+                        Add Case Update
+
+                    </h2>
+
+
+                    <form id="updateForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="field form-full">
+
+                                <label>
+                                    Case UUID
+                                </label>
+
+                                <input
+                                id="updateCaseId"
+                                type="text"
+                                placeholder="Existing case UUID"
+                                required>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Update Date
+                                </label>
+
+                                <input
+                                id="updateDate"
+                                type="date">
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>
+                                    Update Title
+                                </label>
+
+                                <input
+                                id="updateTitle"
+                                type="text"
+                                placeholder="e.g. Hearing conducted"
+                                required>
+
+                            </div>
+
+
+                            <div class="field form-full">
+
+                                <label>
+                                    Details
+                                </label>
+
+                                <textarea
+                                id="updateDetails"
+                                placeholder="Enter update details"></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                            class="primary-btn"
+                            type="submit">
+
+                                SAVE UPDATE
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <br>
+
+
+                <div class="table-box">
+
+                    <div class="table-head">
+
+                        <h2>
+                            Recent Updates
+                        </h2>
+
+                        <button
+                        class="small-btn"
+                        onclick="loadUpdates()">
+
+                            REFRESH
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                    id="updatesTable"
+                    class="loading">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= PROFILES ================= -->
+
+            <section
+            id="page-profiles"
+            class="page">
+
+                <div class="page-heading">
+
+                    <h1>
+                        Client Profiles
+                    </h1>
+
+                    <p>
+                        Registered users and administrators.
+                    </p>
+
+                </div>
+
+
+                <div class="table-box">
+
+                    <div class="table-head">
+
+                        <h2>
+                            Profiles
+                        </h2>
+
+                        <button
+                        class="small-btn"
+                        onclick="loadProfiles()">
+
+                            REFRESH
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                    id="profilesTable"
+                    class="loading">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
 
 </div>
 
 
-<!-- DASHBOARD -->
 
-<div id="dashboard" class="dashboard">
-
-<nav>
-    <button onclick="showSection('dashboardHome')">
-        Dashboard
-    </button>
-
-    <button onclick="showSection('appointments')">
-        Appointments
-    </button>
-
-    <button onclick="showSection('consultations')">
-        Consultations
-    </button>
-
-    <button onclick="showSection('cases')">
-        Cases
-    </button>
-
-    <button onclick="showSection('profiles')">
-        Clients
-    </button>
-</nav>
-
-
-<div class="container">
-
-
-<!-- DASHBOARD HOME -->
-
-<section id="dashboardHome">
-
-<div class="card">
-
-<h2>Welcome, Aqeel Ahmed Qureshi</h2>
-
-<p>
-Qureshi Law Firm Administration Panel
-</p>
-
+<div
+id="messageBox"
+class="message-box">
 </div>
 
-<div class="stats">
-
-<div class="stat">
-Appointments
-<strong id="appointmentCount">0</strong>
-</div>
-
-<div class="stat">
-Consultations
-<strong id="consultationCount">0</strong>
-</div>
-
-<div class="stat">
-Cases
-<strong id="caseCount">0</strong>
-</div>
-
-<div class="stat">
-Clients
-<strong id="clientCount">0</strong>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- APPOINTMENTS -->
-
-<section id="appointments" style="display:none">
-
-<div class="card">
-
-<h2>Appointments</h2>
-
-<div id="appointmentsTable">
-Loading...
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONSULTATIONS -->
-
-<section id="consultations" style="display:none">
-
-<div class="card">
-
-<h2>Consultations</h2>
-
-<div id="consultationsTable">
-Loading...
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CASES -->
-
-<section id="cases" style="display:none">
-
-<div class="card">
-
-<h2>Add New Case</h2>
-
-<form onsubmit="addCase(event)">
-
-<input
-id="caseClient"
-placeholder="Client UUID"
-required
->
-
-<input
-id="caseNumber"
-placeholder="Case Number"
-required
->
-
-<input
-id="court"
-placeholder="Court"
->
-
-<input
-id="caseType"
-placeholder="Case Type"
->
-
-<input
-id="caseTitle"
-placeholder="Case Title"
->
-
-<select id="caseStatus">
-<option>Ongoing</option>
-<option>Pending</option>
-<option>Disposed</option>
-</select>
-
-<input
-id="nextHearing"
-type="date"
->
-
-<textarea
-id="caseDescription"
-placeholder="Case Description"
-></textarea>
-
-<button class="action">
-Add Case
-</button>
-
-</form>
-
-<div id="caseMessage" class="message"></div>
-
-</div>
-
-
-<div class="card">
-
-<h2>Existing Cases</h2>
-
-<div id="casesTable">
-Loading...
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CLIENTS -->
-
-<section id="profiles" style="display:none">
-
-<div class="card">
-
-<h2>Clients</h2>
-
-<div id="profilesTable">
-Loading...
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-</div>
 
 
 <script>
@@ -425,88 +1645,205 @@ Loading...
    SUPABASE CONFIGURATION
 ===================================================== */
 
-/*
- IMPORTANT:
-
- یہاں اپنی Supabase Project URL اور
- ANON / PUBLISHABLE KEY ڈالیں۔
-
- Service Role Key ہرگز نہ ڈالیں۔
-*/
-
 const SUPABASE_URL =
 "https://qviauargicjxhpspgfib.supabase.co";
 
-const SUPABASE_ANON_KEY =
-"PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_GzATmim-fUkxFyMXYWFCXA_reB9bn4D";
 
-const client =
-supabase.createClient(
+
+const supabaseClient =
+window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_ANON_KEY
+    SUPABASE_PUBLISHABLE_KEY
 );
 
 
 /* =====================================================
-   LOGIN
+   HELPERS
 ===================================================== */
 
-async function login(){
+function showMessage(message){
 
-    const email =
-        document.getElementById("email").value.trim();
+    const box =
+    document.getElementById("messageBox");
 
-    const password =
-        document.getElementById("password").value;
+    box.textContent = message;
 
-    const msg =
-        document.getElementById("loginMessage");
+    box.classList.add("show");
 
-    msg.style.display="none";
+    setTimeout(() => {
 
-    const {data,error} =
-        await client.auth.signInWithPassword({
-            email,
-            password
-        });
+        box.classList.remove("show");
 
-    if(error){
+    },3500);
 
-        msg.className="message error";
+}
 
-        msg.innerText=error.message;
 
-        msg.style.display="block";
+function escapeHtml(value){
 
-        return;
+    if(value === null ||
+       value === undefined){
+
+        return "";
+
     }
 
-    /* Verify admin */
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 
-    const {data:profile,error:profileError} =
-        await client
+}
+
+
+function formatDate(value){
+
+    if(!value) return "-";
+
+    return new Date(value)
+    .toLocaleDateString(
+        "en-GB",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+function formatDateTime(value){
+
+    if(!value) return "-";
+
+    return new Date(value)
+    .toLocaleString(
+        "en-GB",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric",
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+async function checkSession(){
+
+    const {
+        data:{
+            session
+        }
+    } =
+    await supabaseClient
+    .auth
+    .getSession();
+
+
+    if(session){
+
+        await verifyAdmin(session);
+
+    }
+
+}
+
+
+async function verifyAdmin(session){
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
         .from("profiles")
         .select("id,full_name,email,role")
-        .eq("id",data.user.id)
+        .eq("id",session.user.id)
         .single();
 
-    if(profileError || !profile || profile.role !== "admin"){
 
-        await client.auth.signOut();
+        if(error){
 
-        msg.className="message error";
+            console.error(error);
 
-        msg.innerText=
-        "Access denied. This account is not an administrator.";
+            await supabaseClient
+            .auth
+            .signOut();
 
-        msg.style.display="block";
+            showLogin();
 
-        return;
+            return;
+
+        }
+
+
+        if(data.role !== "admin"){
+
+            await supabaseClient
+            .auth
+            .signOut();
+
+            showLogin();
+
+            document.getElementById("loginError")
+            .textContent =
+            "Access denied. Administrator account required.";
+
+            return;
+
+        }
+
+
+        showApp(data);
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        showLogin();
+
     }
 
-    document.getElementById("loginBox").style.display="none";
+}
 
-    document.getElementById("dashboard").style.display="block";
+
+function showLogin(){
+
+    document.getElementById("loginScreen")
+    .style.display="flex";
+
+    document.getElementById("app")
+    .style.display="none";
+
+}
+
+
+function showApp(profile){
+
+    document.getElementById("loginScreen")
+    .style.display="none";
+
+    document.getElementById("app")
+    .style.display="block";
+
+    document.getElementById("adminEmail")
+    .textContent =
+    profile.email || "";
 
     loadDashboard();
 
@@ -514,48 +1851,178 @@ async function login(){
 
 
 /* =====================================================
-   LOGOUT
+   LOGIN
 ===================================================== */
 
-async function logout(){
+document
+.getElementById("loginForm")
+.addEventListener(
+"submit",
+async function(event){
 
-    await client.auth.signOut();
+    event.preventDefault();
 
-    location.reload();
 
-}
+    const email =
+    document
+    .getElementById("loginEmail")
+    .value
+    .trim();
+
+
+    const password =
+    document
+    .getElementById("loginPassword")
+    .value;
+
+
+    const errorBox =
+    document
+    .getElementById("loginError");
+
+
+    errorBox.textContent =
+    "Signing in...";
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+    .auth
+    .signInWithPassword({
+
+        email:email,
+
+        password:password
+
+    });
+
+
+    if(error){
+
+        console.error(error);
+
+        errorBox.textContent =
+        error.message;
+
+        return;
+
+    }
+
+
+    if(data.session){
+
+        await verifyAdmin(data.session);
+
+    }
+
+});
 
 
 /* =====================================================
-   SECTION NAVIGATION
+   LOGOUT
 ===================================================== */
 
-function showSection(id){
+document
+.getElementById("logoutBtn")
+.addEventListener(
+"click",
+async function(){
 
-    const sections=[
-        "dashboardHome",
-        "appointments",
-        "consultations",
-        "cases",
-        "profiles"
-    ];
+    await supabaseClient
+    .auth
+    .signOut();
 
-    sections.forEach(section=>{
-        document.getElementById(section).style.display="none";
+    showLogin();
+
+});
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+document
+.querySelectorAll(".side-btn")
+.forEach(button => {
+
+    button.addEventListener(
+    "click",
+    function(){
+
+        showPage(
+            this.dataset.page
+        );
+
     });
 
-    document.getElementById(id).style.display="block";
+});
 
-    if(id==="appointments")
+
+function showPage(page){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(section => {
+
+        section.classList.remove("active");
+
+    });
+
+
+    document
+    .querySelectorAll(".side-btn")
+    .forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const target =
+    document.getElementById(
+        "page-" + page
+    );
+
+
+    const button =
+    document.querySelector(
+        `.side-btn[data-page="${page}"]`
+    );
+
+
+    if(target){
+
+        target.classList.add("active");
+
+    }
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
+
+    if(page === "dashboard")
+        loadDashboard();
+
+    if(page === "appointments")
         loadAppointments();
 
-    if(id==="consultations")
+    if(page === "consultations")
         loadConsultations();
 
-    if(id==="cases")
+    if(page === "cases")
         loadCases();
 
-    if(id==="profiles")
+    if(page === "updates")
+        loadUpdates();
+
+    if(page === "profiles")
         loadProfiles();
 
 }
@@ -567,23 +2034,184 @@ function showSection(id){
 
 async function loadDashboard(){
 
-    const tables=[
-        ["appointments","appointmentCount"],
-        ["consultations","consultationCount"],
-        ["cases","caseCount"],
-        ["profiles","clientCount"]
-    ];
+    try{
 
-    for(const [table,id] of tables){
+        const [
+            appointments,
+            consultations,
+            cases,
+            profiles
+        ] =
+        await Promise.all([
 
-        const {count,error} =
-            await client
-            .from(table)
-            .select("*",{count:"exact",head:true});
+            supabaseClient
+            .from("appointments")
+            .select("*",{count:"exact",head:true}),
 
-        if(!error)
-            document.getElementById(id).innerText=count || 0;
+            supabaseClient
+            .from("consultations")
+            .select("*",{count:"exact",head:true}),
+
+            supabaseClient
+            .from("cases")
+            .select("*",{count:"exact",head:true}),
+
+            supabaseClient
+            .from("profiles")
+            .select("*",{count:"exact",head:true})
+
+        ]);
+
+
+        document
+        .getElementById("statAppointments")
+        .textContent =
+        appointments.count ?? 0;
+
+
+        document
+        .getElementById("statConsultations")
+        .textContent =
+        consultations.count ?? 0;
+
+
+        document
+        .getElementById("statCases")
+        .textContent =
+        cases.count ?? 0;
+
+
+        document
+        .getElementById("statClients")
+        .textContent =
+        profiles.count ?? 0;
+
+
+        await loadRecentAppointments();
+
     }
+    catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "Dashboard loading error."
+        );
+
+    }
+
+}
+
+
+async function loadRecentAppointments(){
+
+    const container =
+    document.getElementById(
+        "recentAppointments"
+    );
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+    .from("appointments")
+    .select("*")
+    .order(
+        "created_at",
+        {ascending:false}
+    )
+    .limit(5);
+
+
+    if(error){
+
+        container.innerHTML =
+        `<div class="loading">
+            ${escapeHtml(error.message)}
+        </div>`;
+
+        return;
+
+    }
+
+
+    if(!data || !data.length){
+
+        container.innerHTML =
+        `<div class="loading">
+            No appointments found.
+        </div>`;
+
+        return;
+
+    }
+
+
+    let html = `
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>CLIENT</th>
+                <th>MOBILE</th>
+                <th>DATE</th>
+                <th>TIME</th>
+                <th>STATUS</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+    `;
+
+
+    data.forEach(row => {
+
+        html += `
+
+        <tr>
+
+            <td>
+                ${escapeHtml(row.client_name)}
+            </td>
+
+            <td>
+                ${escapeHtml(row.mobile)}
+            </td>
+
+            <td>
+                ${formatDate(row.appointment_date)}
+            </td>
+
+            <td>
+                ${escapeHtml(row.appointment_time)}
+            </td>
+
+            <td>
+                <span class="status">
+                    ${escapeHtml(row.status)}
+                </span>
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    html += `
+        </tbody>
+    </table>
+    `;
+
+
+    container.innerHTML = html;
 
 }
 
@@ -594,94 +2222,126 @@ async function loadDashboard(){
 
 async function loadAppointments(){
 
-    const box=
-    document.getElementById("appointmentsTable");
+    const container =
+    document.getElementById(
+        "appointmentsTable"
+    );
 
-    const {data,error}=
-    await client
+
+    container.innerHTML =
+    `<div class="loading">Loading...</div>`;
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
     .from("appointments")
     .select("*")
-    .order("created_at",{ascending:false});
+    .order(
+        "created_at",
+        {ascending:false}
+    );
+
 
     if(error){
 
-        box.innerHTML=
-        "<p>Error loading appointments.</p>";
+        container.innerHTML =
+        `<div class="loading">
+            ${escapeHtml(error.message)}
+        </div>`;
 
         return;
+
     }
+
 
     if(!data.length){
 
-        box.innerHTML="<p>No appointments found.</p>";
+        container.innerHTML =
+        `<div class="loading">
+            No appointments found.
+        </div>`;
 
         return;
+
     }
 
-    let html=`
+
+    let html = `
     <table>
-    <tr>
-        <th>Client</th>
-        <th>Mobile</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Purpose</th>
-        <th>Status</th>
-    </tr>`;
 
-    data.forEach(row=>{
+    <thead>
 
-        html+=`
         <tr>
-            <td>${escapeHtml(row.client_name)}</td>
-            <td>${escapeHtml(row.mobile)}</td>
-            <td>${row.appointment_date || ""}</td>
-            <td>${row.appointment_time || ""}</td>
-            <td>${escapeHtml(row.purpose || "")}</td>
+
+            <th>CLIENT</th>
+            <th>MOBILE</th>
+            <th>DATE</th>
+            <th>TIME</th>
+            <th>PURPOSE</th>
+            <th>STATUS</th>
+            <th>CREATED</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+    `;
+
+
+    data.forEach(row => {
+
+        html += `
+
+        <tr>
+
             <td>
-                <select
-                onchange="updateAppointment('${row.id}',this.value)">
-                    <option ${row.status==="Pending"?"selected":""}>
-                    Pending
-                    </option>
-
-                    <option ${row.status==="Confirmed"?"selected":""}>
-                    Confirmed
-                    </option>
-
-                    <option ${row.status==="Completed"?"selected":""}>
-                    Completed
-                    </option>
-
-                    <option ${row.status==="Cancelled"?"selected":""}>
-                    Cancelled
-                    </option>
-                </select>
+                ${escapeHtml(row.client_name)}
             </td>
-        </tr>`;
+
+            <td>
+                ${escapeHtml(row.mobile)}
+            </td>
+
+            <td>
+                ${formatDate(row.appointment_date)}
+            </td>
+
+            <td>
+                ${escapeHtml(row.appointment_time)}
+            </td>
+
+            <td>
+                ${escapeHtml(row.purpose)}
+            </td>
+
+            <td>
+                <span class="status">
+                    ${escapeHtml(row.status)}
+                </span>
+            </td>
+
+            <td>
+                ${formatDateTime(row.created_at)}
+            </td>
+
+        </tr>
+
+        `;
+
     });
 
-    html+="</table>";
 
-    box.innerHTML=html;
+    html += `
+    </tbody>
+    </table>
+    `;
 
-}
 
-
-/* =====================================================
-   UPDATE APPOINTMENT
-===================================================== */
-
-async function updateAppointment(id,status){
-
-    const {error}=
-    await client
-    .from("appointments")
-    .update({status})
-    .eq("id",id);
-
-    if(error)
-        alert(error.message);
+    container.innerHTML = html;
 
 }
 
@@ -692,91 +2352,121 @@ async function updateAppointment(id,status){
 
 async function loadConsultations(){
 
-    const box=
-    document.getElementById("consultationsTable");
+    const container =
+    document.getElementById(
+        "consultationsTable"
+    );
 
-    const {data,error}=
-    await client
+
+    container.innerHTML =
+    `<div class="loading">Loading...</div>`;
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
     .from("consultations")
     .select("*")
-    .order("created_at",{ascending:false});
+    .order(
+        "created_at",
+        {ascending:false}
+    );
+
 
     if(error){
 
-        box.innerHTML=
-        "<p>Error loading consultations.</p>";
+        container.innerHTML =
+        `<div class="loading">
+            ${escapeHtml(error.message)}
+        </div>`;
 
         return;
+
     }
+
 
     if(!data.length){
 
-        box.innerHTML=
-        "<p>No consultations found.</p>";
+        container.innerHTML =
+        `<div class="loading">
+            No consultation requests found.
+        </div>`;
 
         return;
+
     }
 
-    let html=`
+
+    let html = `
     <table>
-    <tr>
-        <th>Name</th>
-        <th>Mobile</th>
-        <th>Issue</th>
-        <th>Description</th>
-        <th>Status</th>
-    </tr>`;
 
-    data.forEach(row=>{
+    <thead>
 
-        html+=`
         <tr>
-            <td>${escapeHtml(row.full_name)}</td>
-            <td>${escapeHtml(row.mobile)}</td>
-            <td>${escapeHtml(row.issue_type || "")}</td>
-            <td>${escapeHtml(row.description || "")}</td>
+
+            <th>NAME</th>
+            <th>MOBILE</th>
+            <th>ISSUE</th>
+            <th>DESCRIPTION</th>
+            <th>STATUS</th>
+            <th>CREATED</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+    `;
+
+
+    data.forEach(row => {
+
+        html += `
+
+        <tr>
+
             <td>
-                <select
-                onchange="updateConsultation('${row.id}',this.value)">
-
-                    <option ${row.status==="New"?"selected":""}>
-                    New
-                    </option>
-
-                    <option ${row.status==="Contacted"?"selected":""}>
-                    Contacted
-                    </option>
-
-                    <option ${row.status==="Completed"?"selected":""}>
-                    Completed
-                    </option>
-
-                </select>
+                ${escapeHtml(row.full_name)}
             </td>
-        </tr>`;
+
+            <td>
+                ${escapeHtml(row.mobile)}
+            </td>
+
+            <td>
+                ${escapeHtml(row.issue_type)}
+            </td>
+
+            <td>
+                ${escapeHtml(row.description)}
+            </td>
+
+            <td>
+                <span class="status">
+                    ${escapeHtml(row.status)}
+                </span>
+            </td>
+
+            <td>
+                ${formatDateTime(row.created_at)}
+            </td>
+
+        </tr>
+
+        `;
+
     });
 
-    html+="</table>";
 
-    box.innerHTML=html;
+    html += `
+    </tbody>
+    </table>
+    `;
 
-}
 
-
-/* =====================================================
-   UPDATE CONSULTATION
-===================================================== */
-
-async function updateConsultation(id,status){
-
-    const {error}=
-    await client
-    .from("consultations")
-    .update({status})
-    .eq("id",id);
-
-    if(error)
-        alert(error.message);
+    container.innerHTML = html;
 
 }
 
@@ -787,227 +2477,54 @@ async function updateConsultation(id,status){
 
 async function loadCases(){
 
-    const box=
-    document.getElementById("casesTable");
+    const container =
+    document.getElementById(
+        "casesTable"
+    );
 
-    const {data,error}=
-    await client
+
+    container.innerHTML =
+    `<div class="loading">Loading...</div>`;
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
     .from("cases")
     .select("*")
-    .order("created_at",{ascending:false});
+    .order(
+        "created_at",
+        {ascending:false}
+    );
+
 
     if(error){
 
-        box.innerHTML=
-        "<p>Error loading cases.</p>";
+        container.innerHTML =
+        `<div class="loading">
+            ${escapeHtml(error.message)}
+        </div>`;
 
         return;
+
     }
+
 
     if(!data.length){
 
-        box.innerHTML=
-        "<p>No cases found.</p>";
+        container.innerHTML =
+        `<div class="loading">
+            No cases found.
+        </div>`;
 
         return;
+
     }
 
-    let html=`
+
+    let html = `
     <table>
-    <tr>
-        <th>Case No.</th>
-        <th>Court</th>
-        <th>Type</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Next Hearing</th>
-    </tr>`;
 
-    data.forEach(row=>{
-
-        html+=`
-        <tr>
-            <td>${escapeHtml(row.case_number)}</td>
-            <td>${escapeHtml(row.court || "")}</td>
-            <td>${escapeHtml(row.case_type || "")}</td>
-            <td>${escapeHtml(row.title || "")}</td>
-            <td>${escapeHtml(row.status || "")}</td>
-            <td>${row.next_hearing || ""}</td>
-        </tr>`;
-    });
-
-    html+="</table>";
-
-    box.innerHTML=html;
-
-}
-
-
-/* =====================================================
-   ADD CASE
-===================================================== */
-
-async function addCase(event){
-
-    event.preventDefault();
-
-    const message=
-    document.getElementById("caseMessage");
-
-    const {data,error}=
-    await client
-    .from("cases")
-    .insert({
-        client_id:
-            document.getElementById("caseClient").value.trim(),
-
-        case_number:
-            document.getElementById("caseNumber").value.trim(),
-
-        court:
-            document.getElementById("court").value.trim(),
-
-        case_type:
-            document.getElementById("caseType").value.trim(),
-
-        title:
-            document.getElementById("caseTitle").value.trim(),
-
-        status:
-            document.getElementById("caseStatus").value,
-
-        next_hearing:
-            document.getElementById("nextHearing").value || null,
-
-        description:
-            document.getElementById("caseDescription").value.trim()
-    });
-
-    if(error){
-
-        message.className="message error";
-
-        message.innerText=error.message;
-
-        message.style.display="block";
-
-        return;
-    }
-
-    message.className="message success";
-
-    message.innerText="Case added successfully.";
-
-    message.style.display="block";
-
-    event.target.reset();
-
-    loadCases();
-
-}
-
-
-/* =====================================================
-   PROFILES
-===================================================== */
-
-async function loadProfiles(){
-
-    const box=
-    document.getElementById("profilesTable");
-
-    const {data,error}=
-    await client
-    .from("profiles")
-    .select("id,full_name,email,mobile,role")
-    .order("created_at",{ascending:false});
-
-    if(error){
-
-        box.innerHTML=
-        "<p>Error loading clients.</p>";
-
-        return;
-    }
-
-    let html=`
-    <table>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Mobile</th>
-        <th>Role</th>
-        <th>User ID</th>
-    </tr>`;
-
-    data.forEach(row=>{
-
-        html+=`
-        <tr>
-            <td>${escapeHtml(row.full_name)}</td>
-            <td>${escapeHtml(row.email || "")}</td>
-            <td>${escapeHtml(row.mobile || "")}</td>
-            <td>${escapeHtml(row.role)}</td>
-            <td>${row.id}</td>
-        </tr>`;
-    });
-
-    html+="</table>";
-
-    box.innerHTML=html;
-
-}
-
-
-/* =====================================================
-   SECURITY / HTML ESCAPE
-===================================================== */
-
-function escapeHtml(value){
-
-    if(value===null || value===undefined)
-        return "";
-
-    return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-
-/* =====================================================
-   AUTO LOGIN CHECK
-===================================================== */
-
-(async function(){
-
-    const {data}=
-        await client.auth.getSession();
-
-    if(data.session){
-
-        const {data:profile}=
-        await client
-        .from("profiles")
-        .select("role")
-        .eq("id",data.session.user.id)
-        .single();
-
-        if(profile && profile.role==="admin"){
-
-            document.getElementById("loginBox").style.display="none";
-
-            document.getElementById("dashboard").style.display="block";
-
-            loadDashboard();
-        }
-    }
-
-})();
-
-</script>
-
-</body>
-  </html>
+    <thead
