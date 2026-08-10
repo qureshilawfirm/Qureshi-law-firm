@@ -1,31 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Qureshi Law Firm | Admin Panel</title>
-
-<meta name="theme-color" content="#000000">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -34,494 +22,316 @@ rel="stylesheet">
 
 body{
     font-family:'Montserrat',Arial,sans-serif;
-    background:#f3f3f3;
+    background:#f4f4f4;
     color:#111;
 }
 
-button,
-input,
-select,
-textarea{
-    font-family:inherit;
+button,input,select,textarea{
+    font:inherit;
 }
 
 button{
     cursor:pointer;
 }
 
+.hidden{
+    display:none!important;
+}
 
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
-#loginScreen{
+#loginPage{
     min-height:100vh;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    padding:25px;
-
+    padding:20px;
     background:#050505;
 }
 
 .login-box{
     width:100%;
-
     max-width:430px;
-
     background:#fff;
-
     padding:45px 35px;
-
     border:1px solid #333;
-
     box-shadow:0 25px 70px rgba(0,0,0,.4);
-
-    text-align:center;
 }
 
 .login-logo{
     width:85px;
     height:85px;
-
     object-fit:contain;
-
-    background:#fff;
-
     border-radius:50%;
-
-    border:3px solid #111;
-
-    padding:5px;
-
+    background:#fff;
+    border:5px solid #111;
+    padding:4px;
+    display:block;
     margin:0 auto 20px;
 }
 
 .login-box h1{
+    text-align:center;
     font-family:'Cormorant Garamond',serif;
-
-    font-size:42px;
-
-    line-height:1;
-
-    margin-bottom:8px;
+    font-size:38px;
 }
 
 .login-box .subtitle{
+    text-align:center;
     color:#777;
-
     font-size:11px;
-
-    letter-spacing:2px;
-
+    letter-spacing:1.5px;
     margin-bottom:30px;
 }
 
-.field{
+.form-group{
     margin-bottom:18px;
-
-    text-align:left;
 }
 
-.field label{
+.form-group label{
     display:block;
-
     font-size:11px;
-
-    letter-spacing:1px;
-
+    font-weight:600;
     margin-bottom:7px;
-
-    color:#555;
 }
 
-.field input,
-.field select,
-.field textarea{
+.form-group input,
+.form-group select,
+.form-group textarea{
     width:100%;
-
-    padding:13px 14px;
-
-    border:1px solid #bbb;
-
-    background:#fff;
-
-    color:#111;
-
+    border:1px solid #ccc;
+    padding:12px;
     outline:none;
-
-    border-radius:0;
+    background:#fff;
 }
 
-.field textarea{
-    min-height:110px;
-
+.form-group textarea{
+    min-height:100px;
     resize:vertical;
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:#000;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#111;
 }
 
 .primary-btn{
     width:100%;
-
-    padding:14px;
-
     background:#000;
-
     color:#fff;
-
-    border:1px solid #000;
-
-    font-size:11px;
-
-    letter-spacing:1.5px;
-
-    transition:.3s;
+    border:0;
+    padding:14px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
 .primary-btn:hover{
     background:#333;
 }
 
-.error{
-    color:#b00020;
-
-    font-size:12px;
-
+.message{
     margin-top:15px;
-
-    min-height:18px;
+    text-align:center;
+    font-size:12px;
 }
 
+.error{
+    color:#b00020;
+}
 
-/* =========================
-   APP
-========================= */
+.success{
+    color:#16803c;
+}
+
+/* APP */
 
 #app{
-    display:none;
-
     min-height:100vh;
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
 .topbar{
-    height:72px;
-
+    height:70px;
     background:#000;
-
     color:#fff;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     padding:0 25px;
-
     position:sticky;
-
     top:0;
-
     z-index:100;
 }
 
-.topbar-left{
+.top-brand{
     display:flex;
-
     align-items:center;
-
-    gap:14px;
+    gap:12px;
 }
 
-.topbar-logo{
+.top-brand img{
     width:45px;
     height:45px;
-
     object-fit:contain;
-
     background:#fff;
-
     border-radius:50%;
-
     padding:3px;
 }
 
-.topbar-title{
+.top-brand strong{
     font-family:'Cormorant Garamond',serif;
-
-    font-size:27px;
-
-    letter-spacing:2px;
+    font-size:25px;
 }
 
-.topbar-user{
-    color:#aaa;
-
-    font-size:10px;
-
-    margin-left:5px;
+.top-user{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:11px;
 }
 
 .logout-btn{
     background:#fff;
-
     color:#000;
-
     border:0;
-
-    padding:10px 16px;
-
+    padding:9px 15px;
     font-size:10px;
-
-    letter-spacing:1px;
+    font-weight:600;
 }
-
-.logout-btn:hover{
-    background:#ddd;
-}
-
-
-/* =========================
-   LAYOUT
-========================= */
 
 .layout{
     display:flex;
-
-    min-height:calc(100vh - 72px);
+    min-height:calc(100vh - 70px);
 }
 
 .sidebar{
-    width:245px;
-
+    width:240px;
     background:#080808;
-
     color:#fff;
-
-    padding:25px 15px;
-
+    padding:20px 12px;
     flex-shrink:0;
 }
 
 .sidebar-title{
-    color:#777;
-
+    color:#888;
     font-size:9px;
-
-    letter-spacing:3px;
-
-    padding:0 12px 12px;
+    letter-spacing:2px;
+    padding:12px;
+    margin-bottom:5px;
 }
 
-.side-btn{
+.sidebar button{
+    display:block;
     width:100%;
-
     background:transparent;
-
     border:0;
-
-    color:#aaa;
-
+    color:#ccc;
     text-align:left;
-
-    padding:13px 12px;
-
+    padding:13px 14px;
     margin-bottom:3px;
-
     font-size:11px;
-
-    letter-spacing:.5px;
-
-    transition:.25s;
 }
 
-.side-btn:hover,
-.side-btn.active{
+.sidebar button:hover,
+.sidebar button.active{
     background:#fff;
-
     color:#000;
 }
 
-
-/* =========================
-   CONTENT
-========================= */
-
-.content{
+.main{
     flex:1;
-
-    padding:35px;
-
+    padding:30px;
     overflow:hidden;
 }
 
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-.page-heading{
-    margin-bottom:30px;
-}
-
-.page-heading h1{
+.page-title{
     font-family:'Cormorant Garamond',serif;
-
-    font-size:48px;
-
-    line-height:1;
+    font-size:45px;
+    margin-bottom:5px;
 }
 
-.page-heading p{
+.page-subtitle{
     color:#777;
-
     font-size:12px;
-
-    margin-top:8px;
+    margin-bottom:25px;
 }
 
-
-/* =========================
-   DASHBOARD CARDS
-========================= */
+/* DASHBOARD */
 
 .stats{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:18px;
-
     margin-bottom:30px;
 }
 
 .stat{
     background:#fff;
-
     border:1px solid #ddd;
-
     padding:25px;
-
-    position:relative;
 }
 
 .stat-number{
     font-family:'Cormorant Garamond',serif;
-
-    font-size:48px;
-
-    line-height:1;
+    font-size:45px;
 }
 
 .stat-label{
+    font-size:10px;
     color:#777;
-
-    font-size:10px;
-
-    letter-spacing:1.5px;
-
-    margin-top:8px;
-}
-
-
-/* =========================
-   TABLE
-========================= */
-
-.table-box{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    overflow:auto;
-}
-
-.table-head{
-    padding:18px 20px;
-
-    border-bottom:1px solid #ddd;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-}
-
-.table-head h2{
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:28px;
-}
-
-.small-btn{
-    background:#000;
-
-    color:#fff;
-
-    border:0;
-
-    padding:10px 15px;
-
-    font-size:10px;
-
     letter-spacing:1px;
 }
 
-.small-btn:hover{
-    background:#333;
+/* TABLE */
+
+.panel{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:20px;
+    margin-bottom:25px;
+    overflow-x:auto;
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.panel-header h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+}
+
+.refresh-btn{
+    background:#000;
+    color:#fff;
+    border:0;
+    padding:9px 14px;
+    font-size:10px;
 }
 
 table{
     width:100%;
-
     border-collapse:collapse;
-
     min-width:700px;
 }
 
 th{
-    background:#080808;
-
+    background:#050505;
     color:#fff;
-
     text-align:left;
-
-    padding:12px;
-
+    padding:11px;
     font-size:10px;
-
-    letter-spacing:1px;
-
-    white-space:nowrap;
+    letter-spacing:.5px;
 }
 
 td{
     border-bottom:1px solid #eee;
-
-    padding:12px;
-
-    font-size:12px;
-
+    padding:11px;
+    font-size:11px;
     vertical-align:top;
 }
 
@@ -531,163 +341,78 @@ tr:hover td{
 
 .status{
     display:inline-block;
-
-    padding:5px 9px;
-
-    border:1px solid #ccc;
-
+    padding:5px 8px;
+    background:#eee;
     font-size:9px;
-
-    letter-spacing:.5px;
+    font-weight:600;
 }
 
-.action-btn{
-    border:1px solid #111;
-
-    background:#fff;
-
-    color:#111;
-
-    padding:6px 9px;
-
-    font-size:9px;
-
-    margin:2px;
-}
-
-.action-btn:hover{
-    background:#000;
-
-    color:#fff;
-}
-
-
-/* =========================
-   FORM PANEL
-========================= */
-
-.form-box{
-    background:#fff;
-
-    border:1px solid #ddd;
-
-    padding:30px;
-
-    max-width:850px;
-}
+/* FORMS */
 
 .form-grid{
     display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:18px;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-.form-full{
-    grid-column:1 / -1;
+.full{
+    grid-column:1/-1;
 }
 
-.form-actions{
-    margin-top:20px;
-
-    display:flex;
-
-    gap:10px;
-}
-
-.form-actions button{
-    width:auto;
-
-    padding-left:25px;
-
-    padding-right:25px;
-}
-
-.cancel-btn{
-    background:#fff;
-
-    color:#000;
-
-    border:1px solid #111;
-}
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-.message-box{
-    position:fixed;
-
-    right:20px;
-
-    bottom:20px;
-
-    z-index:1000;
-
+.save-btn{
     background:#000;
-
     color:#fff;
+    border:0;
+    padding:13px 25px;
+    font-size:11px;
+    font-weight:600;
+}
 
-    padding:15px 20px;
+.delete-btn{
+    background:#b00020;
+    color:#fff;
+    border:0;
+    padding:6px 9px;
+    font-size:9px;
+}
 
+.empty{
+    text-align:center;
+    color:#888;
+    padding:30px;
     font-size:12px;
-
-    display:none;
-
-    max-width:350px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
-
-.message-box.show{
-    display:block;
-}
-
-
-/* =========================
-   LOADING
-========================= */
 
 .loading{
-    padding:30px;
-
     text-align:center;
-
+    padding:25px;
     color:#777;
-
     font-size:12px;
 }
 
+/* MOBILE */
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:1000px){
+@media(max-width:900px){
 
     .stats{
         grid-template-columns:1fr 1fr;
     }
 
     .sidebar{
-        width:210px;
+        width:190px;
     }
 
 }
 
-@media(max-width:750px){
+@media(max-width:650px){
 
     .topbar{
-        padding:0 12px;
+        height:auto;
+        padding:12px 15px;
+        gap:10px;
     }
 
-    .topbar-title{
-        font-size:21px;
-    }
-
-    .topbar-user{
+    .top-user span{
         display:none;
     }
 
@@ -697,39 +422,29 @@ tr:hover td{
 
     .sidebar{
         width:100%;
-
         display:flex;
-
         overflow-x:auto;
-
-        padding:8px;
+        padding:7px;
+        gap:5px;
     }
 
     .sidebar-title{
         display:none;
     }
 
-    .side-btn{
-        width:auto;
-
+    .sidebar button{
         white-space:nowrap;
-
-        margin:0 3px;
-
+        width:auto;
+        margin:0;
         padding:10px 12px;
     }
 
-    .content{
-        padding:20px 12px;
-    }
-
-    .page-heading h1{
-        font-size:40px;
+    .main{
+        padding:18px 12px;
     }
 
     .stats{
         grid-template-columns:1fr 1fr;
-
         gap:10px;
     }
 
@@ -737,7 +452,7 @@ tr:hover td{
         padding:18px;
     }
 
-    .stat-number{
+    .page-title{
         font-size:38px;
     }
 
@@ -745,898 +460,523 @@ tr:hover td{
         grid-template-columns:1fr;
     }
 
-    .form-full{
+    .full{
         grid-column:auto;
     }
 
 }
-
-@media(max-width:450px){
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .login-box{
-        padding:35px 22px;
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- LOGIN -->
 
-<!-- =====================================================
-     LOGIN SCREEN
-===================================================== -->
+<section id="loginPage">
 
-<div id="loginScreen">
+<div class="login-box">
 
-    <div class="login-box">
+<img
+class="login-logo"
+src="IMG_20241215_212343.jpg"
+alt="Qureshi Law Firm">
 
-        <img
-        class="login-logo"
-        src="IMG_20241215_212343.jpg"
-        alt="Qureshi Law Firm">
+<h1>Qureshi Law Firm</h1>
 
-        <h1>Admin Panel</h1>
-
-        <div class="subtitle">
-            QURESHI LAW FIRM
-        </div>
-
-        <form id="loginForm">
-
-            <div class="field">
-
-                <label>Email</label>
-
-                <input
-                id="loginEmail"
-                type="email"
-                value="infoqureshilawfirm@gmail.com"
-                required>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>Password</label>
-
-                <input
-                id="loginPassword"
-                type="password"
-                placeholder="Enter password"
-                required>
-
-            </div>
-
-
-            <button
-            class="primary-btn"
-            type="submit">
-
-                LOGIN TO ADMIN PANEL
-
-            </button>
-
-        </form>
-
-
-        <div
-        id="loginError"
-        class="error">
-        </div>
-
-    </div>
-
+<div class="subtitle">
+ADMINISTRATION PANEL
 </div>
 
-
-
-<!-- =====================================================
-     ADMIN APP
-===================================================== -->
-
-<div id="app">
-
-
-    <!-- TOP BAR -->
-
-    <header class="topbar">
-
-        <div class="topbar-left">
-
-            <img
-            class="topbar-logo"
-            src="IMG_20241215_212343.jpg"
-            alt="Logo">
-
-            <div>
-
-                <div class="topbar-title">
-                    QURESHI LAW FIRM
-                </div>
-
-                <div class="topbar-user"
-                id="adminEmail">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button
-        class="logout-btn"
-        id="logoutBtn">
-
-            LOGOUT
-
-        </button>
-
-    </header>
-
-
-
-    <div class="layout">
-
-
-        <!-- SIDEBAR -->
-
-        <aside class="sidebar">
-
-            <div class="sidebar-title">
-                ADMINISTRATION
-            </div>
-
-
-            <button
-            class="side-btn active"
-            data-page="dashboard">
-
-                DASHBOARD
-
-            </button>
-
-
-            <button
-            class="side-btn"
-            data-page="appointments">
-
-                APPOINTMENTS
-
-            </button>
-
-
-            <button
-            class="side-btn"
-            data-page="consultations">
-
-                CONSULTATIONS
-
-            </button>
-
-
-            <button
-            class="side-btn"
-            data-page="cases">
-
-                CASES
-
-            </button>
-
-
-            <button
-            class="side-btn"
-            data-page="updates">
-
-                CASE UPDATES
-
-            </button>
-
-
-            <button
-            class="side-btn"
-            data-page="profiles">
-
-                CLIENT PROFILES
-
-            </button>
-
-        </aside>
-
-
-
-        <!-- MAIN CONTENT -->
-
-        <main class="content">
-
-
-            <!-- ================= DASHBOARD ================= -->
-
-            <section
-            id="page-dashboard"
-            class="page active">
-
-                <div class="page-heading">
-
-                    <h1>
-                        Dashboard
-                    </h1>
-
-                    <p>
-                        Qureshi Law Firm administration overview.
-                    </p>
-
-                </div>
-
-
-                <div class="stats">
-
-                    <div class="stat">
-
-                        <div
-                        class="stat-number"
-                        id="statAppointments">
-                        0
-                        </div>
-
-                        <div class="stat-label">
-                            APPOINTMENTS
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div
-                        class="stat-number"
-                        id="statConsultations">
-                        0
-                        </div>
-
-                        <div class="stat-label">
-                            CONSULTATIONS
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div
-                        class="stat-number"
-                        id="statCases">
-                        0
-                        </div>
-
-                        <div class="stat-label">
-                            CASES
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div
-                        class="stat-number"
-                        id="statClients">
-                        0
-                        </div>
-
-                        <div class="stat-label">
-                            CLIENT PROFILES
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="table-box">
-
-                    <div class="table-head">
-
-                        <h2>
-                            Recent Appointments
-                        </h2>
-
-                        <button
-                        class="small-btn"
-                        onclick="showPage('appointments')">
-
-                            VIEW ALL
-
-                        </button>
-
-                    </div>
-
-                    <div
-                    id="recentAppointments"
-                    class="loading">
-
-                        Loading...
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= APPOINTMENTS ================= -->
-
-            <section
-            id="page-appointments"
-            class="page">
-
-                <div class="page-heading">
-
-                    <h1>
-                        Appointments
-                    </h1>
-
-                    <p>
-                        Manage client appointment requests.
-                    </p>
-
-                </div>
-
-
-                <div class="table-box">
-
-                    <div class="table-head">
-
-                        <h2>
-                            All Appointments
-                        </h2>
-
-                        <button
-                        class="small-btn"
-                        onclick="loadAppointments()">
-
-                            REFRESH
-
-                        </button>
-
-                    </div>
-
-
-                    <div id="appointmentsTable"
-                    class="loading">
-
-                        Loading...
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= CONSULTATIONS ================= -->
-
-            <section
-            id="page-consultations"
-            class="page">
-
-                <div class="page-heading">
-
-                    <h1>
-                        Consultations
-                    </h1>
-
-                    <p>
-                        Manage online legal consultation requests.
-                    </p>
-
-                </div>
-
-
-                <div class="table-box">
-
-                    <div class="table-head">
-
-                        <h2>
-                            Consultation Requests
-                        </h2>
-
-                        <button
-                        class="small-btn"
-                        onclick="loadConsultations()">
-
-                            REFRESH
-
-                        </button>
-
-                    </div>
-
-
-                    <div
-                    id="consultationsTable"
-                    class="loading">
-
-                        Loading...
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= CASES ================= -->
-
-            <section
-            id="page-cases"
-            class="page">
-
-                <div class="page-heading">
-
-                    <h1>
-                        Cases
-                    </h1>
-
-                    <p>
-                        Create and manage client cases.
-                    </p>
-
-                </div>
-
-
-                <div class="form-box">
-
-                    <h2
-                    style="font-family:'Cormorant Garamond',serif;font-size:30px;margin-bottom:20px;">
-
-                        Add New Case
-
-                    </h2>
-
-
-                    <form id="caseForm">
-
-                        <div class="form-grid">
-
-
-                            <div class="field">
-
-                                <label>
-                                    Client UUID
-                                </label>
-
-                                <input
-                                id="caseClientId"
-                                type="text"
-                                placeholder="Client profile UUID"
-                                required>
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Case Number
-                                </label>
-
-                                <input
-                                id="caseNumber"
-                                type="text"
-                                placeholder="e.g. W.P. No. 123/2026"
-                                required>
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Court
-                                </label>
-
-                                <input
-                                id="caseCourt"
-                                type="text"
-                                placeholder="Court">
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Case Type
-                                </label>
-
-                                <select id="caseType">
-
-                                    <option value="">
-                                        Select Type
-                                    </option>
-
-                                    <option>
-                                        Civil
-                                    </option>
-
-                                    <option>
-                                        Family
-                                    </option>
-
-                                    <option>
-                                        Criminal
-                                    </option>
-
-                                    <option>
-                                        Constitutional
-                                    </option>
-
-                                    <option>
-                                        Writ
-                                    </option>
-
-                                    <option>
-                                        Other
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Case Title
-                                </label>
-
-                                <input
-                                id="caseTitle"
-                                type="text"
-                                placeholder="Case title">
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Status
-                                </label>
-
-                                <select id="caseStatus">
-
-                                    <option>
-                                        Ongoing
-                                    </option>
-
-                                    <option>
-                                        Pending
-                                    </option>
-
-                                    <option>
-                                        Decided
-                                    </option>
-
-                                    <option>
-                                        Disposed
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Next Hearing
-                                </label>
-
-                                <input
-                                id="caseHearing"
-                                type="date">
-
-                            </div>
-
-
-                            <div class="field form-full">
-
-                                <label>
-                                    Description
-                                </label>
-
-                                <textarea
-                                id="caseDescription"
-                                placeholder="Case description"></textarea>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-actions">
-
-                            <button
-                            class="primary-btn"
-                            type="submit">
-
-                                CREATE CASE
-
-                            </button>
-
-                            <button
-                            class="primary-btn cancel-btn"
-                            type="reset">
-
-                                CLEAR
-
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
-
-                <br>
-
-
-                <div class="table-box">
-
-                    <div class="table-head">
-
-                        <h2>
-                            Existing Cases
-                        </h2>
-
-                        <button
-                        class="small-btn"
-                        onclick="loadCases()">
-
-                            REFRESH
-
-                        </button>
-
-                    </div>
-
-
-                    <div
-                    id="casesTable"
-                    class="loading">
-
-                        Loading...
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= CASE UPDATES ================= -->
-
-            <section
-            id="page-updates"
-            class="page">
-
-                <div class="page-heading">
-
-                    <h1>
-                        Case Updates
-                    </h1>
-
-                    <p>
-                        Add hearing dates and progress updates.
-                    </p>
-
-                </div>
-
-
-                <div class="form-box">
-
-                    <h2
-                    style="font-family:'Cormorant Garamond',serif;font-size:30px;margin-bottom:20px;">
-
-                        Add Case Update
-
-                    </h2>
-
-
-                    <form id="updateForm">
-
-                        <div class="form-grid">
-
-
-                            <div class="field form-full">
-
-                                <label>
-                                    Case UUID
-                                </label>
-
-                                <input
-                                id="updateCaseId"
-                                type="text"
-                                placeholder="Existing case UUID"
-                                required>
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Update Date
-                                </label>
-
-                                <input
-                                id="updateDate"
-                                type="date">
-
-                            </div>
-
-
-                            <div class="field">
-
-                                <label>
-                                    Update Title
-                                </label>
-
-                                <input
-                                id="updateTitle"
-                                type="text"
-                                placeholder="e.g. Hearing conducted"
-                                required>
-
-                            </div>
-
-
-                            <div class="field form-full">
-
-                                <label>
-                                    Details
-                                </label>
-
-                                <textarea
-                                id="updateDetails"
-                                placeholder="Enter update details"></textarea>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-actions">
-
-                            <button
-                            class="primary-btn"
-                            type="submit">
-
-                                SAVE UPDATE
-
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
-
-                <br>
-
-
-                <div class="table-box">
-
-                    <div class="table-head">
-
-                        <h2>
-                            Recent Updates
-                        </h2>
-
-                        <button
-                        class="small-btn"
-                        onclick="loadUpdates()">
-
-                            REFRESH
-
-                        </button>
-
-                    </div>
-
-
-                    <div
-                    id="updatesTable"
-                    class="loading">
-
-                        Loading...
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= PROFILES ================= -->
-
-            <section
-            id="page-profiles"
-            class="page">
-
-                <div class="page-heading">
-
-                    <h1>
-                        Client Profiles
-                    </h1>
-
-                    <p>
-                        Registered users and administrators.
-                    </p>
-
-                </div>
-
-
-                <div class="table-box">
-
-                    <div class="table-head">
-
-                        <h2>
-                            Profiles
-                        </h2>
-
-                        <button
-                        class="small-btn"
-                        onclick="loadProfiles()">
-
-                            REFRESH
-
-                        </button>
-
-                    </div>
-
-
-                    <div
-                    id="profilesTable"
-                    class="loading">
-
-                        Loading...
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-        </main>
-
-    </div>
-
+<form id="loginForm">
+
+<div class="form-group">
+<label>EMAIL</label>
+
+<input
+type="email"
+id="loginEmail"
+value="infoqureshilawfirm@gmail.com"
+required>
 </div>
 
+<div class="form-group">
+<label>PASSWORD</label>
 
+<input
+type="password"
+id="loginPassword"
+placeholder="Enter your password"
+required>
+</div>
+
+<button
+type="submit"
+class="primary-btn">
+LOGIN
+</button>
 
 <div
-id="messageBox"
-class="message-box">
+id="loginMessage"
+class="message">
 </div>
 
+</form>
+
+</div>
+
+</section>
+
+
+<!-- APPLICATION -->
+
+<section id="app" class="hidden">
+
+<header class="topbar">
+
+<div class="top-brand">
+
+<img
+src="IMG_20241215_212343.jpg"
+alt="Qureshi Law Firm">
+
+<strong>Qureshi Law Firm</strong>
+
+</div>
+
+<div class="top-user">
+
+<span id="adminEmail"></span>
+
+<button
+class="logout-btn"
+onclick="logout()">
+LOGOUT
+</button>
+
+</div>
+
+</header>
+
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<div class="sidebar-title">
+ADMINISTRATION
+</div>
+
+<button
+class="active"
+onclick="showPage('dashboard',this)">
+📊 Dashboard
+</button>
+
+<button
+onclick="showPage('clients',this)">
+👥 Clients
+</button>
+
+<button
+onclick="showPage('cases',this)">
+⚖️ Cases
+</button>
+
+<button
+onclick="showPage('appointments',this)">
+📅 Appointments
+</button>
+
+<button
+onclick="showPage('consultations',this)">
+💬 Consultations
+</button>
+
+<button
+onclick="showPage('updates',this)">
+📝 Case Updates
+</button>
+
+<button
+onclick="showPage('documents',this)">
+📁 Documents
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<!-- DASHBOARD -->
+
+<div id="dashboardPage">
+
+<h1 class="page-title">
+Dashboard
+</h1>
+
+<p class="page-subtitle">
+Qureshi Law Firm — Administration
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-number" id="statClients">—</div>
+<div class="stat-label">CLIENTS</div>
+</div>
+
+<div class="stat">
+<div class="stat-number" id="statCases">—</div>
+<div class="stat-label">CASES</div>
+</div>
+
+<div class="stat">
+<div class="stat-number" id="statAppointments">—</div>
+<div class="stat-label">APPOINTMENTS</div>
+</div>
+
+<div class="stat">
+<div class="stat-number" id="statConsultations">—</div>
+<div class="stat-label">CONSULTATIONS</div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-header">
+
+<h3>Recent Appointments</h3>
+
+<button
+class="refresh-btn"
+onclick="loadDashboard()">
+REFRESH
+</button>
+
+</div>
+
+<div id="recentAppointments">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CLIENTS -->
+
+<div id="clientsPage" class="hidden">
+
+<h1 class="page-title">Clients</h1>
+
+<p class="page-subtitle">
+Registered client profiles
+</p>
+
+<div class="panel">
+
+<div class="panel-header">
+<h3>Client List</h3>
+
+<button
+class="refresh-btn"
+onclick="loadClients()">
+REFRESH
+</button>
+</div>
+
+<div id="clientsTable">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CASES -->
+
+<div id="casesPage" class="hidden">
+
+<h1 class="page-title">Cases</h1>
+
+<p class="page-subtitle">
+Manage client cases
+</p>
+
+<div class="panel">
+
+<h3 style="font-family:'Cormorant Garamond';font-size:28px;margin-bottom:20px;">
+Add New Case
+</h3>
+
+<form id="caseForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>CLIENT ID</label>
+<input type="text" id="caseClientId" required>
+</div>
+
+<div class="form-group">
+<label>CASE NUMBER</label>
+<input type="text" id="caseNumber" required>
+</div>
+
+<div class="form-group">
+<label>COURT</label>
+<input type="text" id="caseCourt">
+</div>
+
+<div class="form-group">
+<label>CASE TYPE</label>
+<input type="text" id="caseType">
+</div>
+
+<div class="form-group">
+<label>TITLE</label>
+<input type="text" id="caseTitle">
+</div>
+
+<div class="form-group">
+<label>STATUS</label>
+
+<select id="caseStatus">
+<option>Ongoing</option>
+<option>Pending</option>
+<option>Decided</option>
+<option>Disposed</option>
+<option>Closed</option>
+</select>
+
+</div>
+
+<div class="form-group">
+<label>NEXT HEARING</label>
+<input type="date" id="nextHearing">
+</div>
+
+<div class="form-group full">
+<label>DESCRIPTION</label>
+<textarea id="caseDescription"></textarea>
+</div>
+
+</div>
+
+<button class="save-btn" type="submit">
+SAVE CASE
+</button>
+
+<div id="caseMessage" class="message"></div>
+
+</form>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-header">
+<h3>All Cases</h3>
+
+<button
+class="refresh-btn"
+onclick="loadCases()">
+REFRESH
+</button>
+</div>
+
+<div id="casesTable">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- APPOINTMENTS -->
+
+<div id="appointmentsPage" class="hidden">
+
+<h1 class="page-title">Appointments</h1>
+
+<p class="page-subtitle">
+Client appointment requests
+</p>
+
+<div class="panel">
+
+<div class="panel-header">
+
+<h3>Appointments</h3>
+
+<button
+class="refresh-btn"
+onclick="loadAppointments()">
+REFRESH
+</button>
+
+</div>
+
+<div id="appointmentsTable">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CONSULTATIONS -->
+
+<div id="consultationsPage" class="hidden">
+
+<h1 class="page-title">Consultations</h1>
+
+<p class="page-subtitle">
+Online consultation requests
+</p>
+
+<div class="panel">
+
+<div class="panel-header">
+
+<h3>Consultation Requests</h3>
+
+<button
+class="refresh-btn"
+onclick="loadConsultations()">
+REFRESH
+</button>
+
+</div>
+
+<div id="consultationsTable">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- UPDATES -->
+
+<div id="updatesPage" class="hidden">
+
+<h1 class="page-title">Case Updates</h1>
+
+<p class="page-subtitle">
+Add updates to client cases
+</p>
+
+<div class="panel">
+
+<h3 style="font-family:'Cormorant Garamond';font-size:28px;margin-bottom:20px;">
+Add Case Update
+</h3>
+
+<form id="updateForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>CASE ID</label>
+<input type="text" id="updateCaseId" required>
+</div>
+
+<div class="form-group">
+<label>DATE</label>
+<input type="date" id="updateDate">
+</div>
+
+<div class="form-group">
+<label>TITLE</label>
+<input type="text" id="updateTitle" required>
+</div>
+
+<div class="form-group full">
+<label>DETAILS</label>
+<textarea id="updateDetails"></textarea>
+</div>
+
+</div>
+
+<button class="save-btn" type="submit">
+SAVE UPDATE
+</button>
+
+<div id="updateMessage" class="message"></div>
+
+</form>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-header">
+
+<h3>Recent Updates</h3>
+
+<button
+class="refresh-btn"
+onclick="loadUpdates()">
+REFRESH
+</button>
+
+</div>
+
+<div id="updatesTable">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DOCUMENTS -->
+
+<div id="documentsPage" class="hidden">
+
+<h1 class="page-title">Documents</h1>
+
+<p class="page-subtitle">
+Client and case documents
+</p>
+
+<div class="panel">
+
+<div class="panel-header">
+
+<h3>Documents</h3>
+
+<button
+class="refresh-btn"
+onclick="loadDocuments()">
+REFRESH
+</button>
+
+</div>
+
+<div id="documentsTable">
+<div class="loading">Loading...</div>
+</div>
+
+</div>
+
+</div>
+
+
+</main>
+
+</div>
+
+</section>
 
 
 <script>
@@ -1648,206 +988,22 @@ class="message-box">
 const SUPABASE_URL =
 "https://qviauargicjxhpspgfib.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
 "sb_publishable_GzATmim-fUkxFyMXYWFCXA_reB9bn4D";
-
 
 const supabaseClient =
 window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_KEY
 );
 
 
 /* =====================================================
-   HELPERS
+   ADMIN EMAIL
 ===================================================== */
 
-function showMessage(message){
-
-    const box =
-    document.getElementById("messageBox");
-
-    box.textContent = message;
-
-    box.classList.add("show");
-
-    setTimeout(() => {
-
-        box.classList.remove("show");
-
-    },3500);
-
-}
-
-
-function escapeHtml(value){
-
-    if(value === null ||
-       value === undefined){
-
-        return "";
-
-    }
-
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-function formatDate(value){
-
-    if(!value) return "-";
-
-    return new Date(value)
-    .toLocaleDateString(
-        "en-GB",
-        {
-            day:"2-digit",
-            month:"short",
-            year:"numeric"
-        }
-    );
-
-}
-
-
-function formatDateTime(value){
-
-    if(!value) return "-";
-
-    return new Date(value)
-    .toLocaleString(
-        "en-GB",
-        {
-            day:"2-digit",
-            month:"short",
-            year:"numeric",
-            hour:"2-digit",
-            minute:"2-digit"
-        }
-    );
-
-}
-
-
-/* =====================================================
-   AUTH
-===================================================== */
-
-async function checkSession(){
-
-    const {
-        data:{
-            session
-        }
-    } =
-    await supabaseClient
-    .auth
-    .getSession();
-
-
-    if(session){
-
-        await verifyAdmin(session);
-
-    }
-
-}
-
-
-async function verifyAdmin(session){
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-        .from("profiles")
-        .select("id,full_name,email,role")
-        .eq("id",session.user.id)
-        .single();
-
-
-        if(error){
-
-            console.error(error);
-
-            await supabaseClient
-            .auth
-            .signOut();
-
-            showLogin();
-
-            return;
-
-        }
-
-
-        if(data.role !== "admin"){
-
-            await supabaseClient
-            .auth
-            .signOut();
-
-            showLogin();
-
-            document.getElementById("loginError")
-            .textContent =
-            "Access denied. Administrator account required.";
-
-            return;
-
-        }
-
-
-        showApp(data);
-
-    }
-    catch(error){
-
-        console.error(error);
-
-        showLogin();
-
-    }
-
-}
-
-
-function showLogin(){
-
-    document.getElementById("loginScreen")
-    .style.display="flex";
-
-    document.getElementById("app")
-    .style.display="none";
-
-}
-
-
-function showApp(profile){
-
-    document.getElementById("loginScreen")
-    .style.display="none";
-
-    document.getElementById("app")
-    .style.display="block";
-
-    document.getElementById("adminEmail")
-    .textContent =
-    profile.email || "";
-
-    loadDashboard();
-
-}
+const ADMIN_EMAIL =
+"infoqureshilawfirm@gmail.com";
 
 
 /* =====================================================
@@ -1856,174 +1012,199 @@ function showApp(profile){
 
 document
 .getElementById("loginForm")
-.addEventListener(
-"submit",
-async function(event){
+.addEventListener("submit", async function(e){
 
-    event.preventDefault();
-
+    e.preventDefault();
 
     const email =
-    document
-    .getElementById("loginEmail")
+    document.getElementById("loginEmail")
     .value
     .trim();
 
-
     const password =
-    document
-    .getElementById("loginPassword")
+    document.getElementById("loginPassword")
     .value;
 
+    const message =
+    document.getElementById("loginMessage");
 
-    const errorBox =
-    document
-    .getElementById("loginError");
+    message.className="message";
+    message.textContent="Logging in...";
 
+    try{
 
-    errorBox.textContent =
-    "Signing in...";
+        const {data,error} =
+        await supabaseClient.auth.signInWithPassword({
+            email:email,
+            password:password
+        });
 
+        if(error){
+            throw error;
+        }
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .auth
-    .signInWithPassword({
+        if(!data.user){
+            throw new Error("User account not found.");
+        }
 
-        email:email,
+        /*
+         * Verify that the authenticated user is actually admin.
+         */
 
-        password:password
+        const {data:profile,error:profileError} =
+        await supabaseClient
+        .from("profiles")
+        .select("id,full_name,email,role")
+        .eq("id",data.user.id)
+        .single();
 
-    });
+        if(profileError){
+            await supabaseClient.auth.signOut();
+            throw new Error(
+                "Profile verification failed: "
+                + profileError.message
+            );
+        }
 
+        if(profile.role !== "admin"){
+            await supabaseClient.auth.signOut();
+            throw new Error(
+                "Access denied. This account is not an administrator."
+            );
+        }
 
-    if(error){
+        showAdmin(data.user,profile);
+
+    }catch(error){
 
         console.error(error);
 
-        errorBox.textContent =
-        error.message;
+        message.className="message error";
 
-        return;
-
-    }
-
-
-    if(data.session){
-
-        await verifyAdmin(data.session);
-
+        message.textContent =
+        error.message ||
+        "Login failed.";
     }
 
 });
+
+
+/* =====================================================
+   SESSION CHECK
+===================================================== */
+
+async function checkSession(){
+
+    const {data} =
+    await supabaseClient.auth.getSession();
+
+    if(data.session){
+
+        const {data:profile} =
+        await supabaseClient
+        .from("profiles")
+        .select("id,full_name,email,role")
+        .eq("id",data.session.user.id)
+        .single();
+
+        if(profile && profile.role==="admin"){
+
+            showAdmin(
+                data.session.user,
+                profile
+            );
+
+        }else{
+
+            await supabaseClient.auth.signOut();
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW ADMIN
+===================================================== */
+
+function showAdmin(user,profile){
+
+    document
+    .getElementById("loginPage")
+    .classList.add("hidden");
+
+    document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+    document
+    .getElementById("adminEmail")
+    .textContent =
+    profile.email || user.email;
+
+    loadDashboard();
+}
 
 
 /* =====================================================
    LOGOUT
 ===================================================== */
 
-document
-.getElementById("logoutBtn")
-.addEventListener(
-"click",
-async function(){
+async function logout(){
 
-    await supabaseClient
-    .auth
-    .signOut();
+    await supabaseClient.auth.signOut();
 
-    showLogin();
+    location.reload();
 
-});
+}
 
 
 /* =====================================================
    NAVIGATION
 ===================================================== */
 
-document
-.querySelectorAll(".side-btn")
-.forEach(button => {
-
-    button.addEventListener(
-    "click",
-    function(){
-
-        showPage(
-            this.dataset.page
-        );
-
-    });
-
-});
-
-
-function showPage(page){
+function showPage(page,button){
 
     document
-    .querySelectorAll(".page")
-    .forEach(section => {
-
-        section.classList.remove("active");
-
+    .querySelectorAll(".main > div")
+    .forEach(el=>{
+        el.classList.add("hidden");
     });
-
 
     document
-    .querySelectorAll(".side-btn")
-    .forEach(button => {
+    .getElementById(page+"Page")
+    .classList.remove("hidden");
 
-        button.classList.remove("active");
-
+    document
+    .querySelectorAll(".sidebar button")
+    .forEach(btn=>{
+        btn.classList.remove("active");
     });
 
+    button.classList.add("active");
 
-    const target =
-    document.getElementById(
-        "page-" + page
-    );
-
-
-    const button =
-    document.querySelector(
-        `.side-btn[data-page="${page}"]`
-    );
-
-
-    if(target){
-
-        target.classList.add("active");
-
-    }
-
-
-    if(button){
-
-        button.classList.add("active");
-
-    }
-
-
-    if(page === "dashboard")
+    if(page==="dashboard")
         loadDashboard();
 
-    if(page === "appointments")
-        loadAppointments();
+    if(page==="clients")
+        loadClients();
 
-    if(page === "consultations")
-        loadConsultations();
-
-    if(page === "cases")
+    if(page==="cases")
         loadCases();
 
-    if(page === "updates")
+    if(page==="appointments")
+        loadAppointments();
+
+    if(page==="consultations")
+        loadConsultations();
+
+    if(page==="updates")
         loadUpdates();
 
-    if(page === "profiles")
-        loadProfiles();
+    if(page==="documents")
+        loadDocuments();
 
 }
 
@@ -2032,441 +1213,168 @@ function showPage(page){
    DASHBOARD
 ===================================================== */
 
+async function countRows(table){
+
+    const {count,error} =
+    await supabaseClient
+    .from(table)
+    .select("*",{count:"exact",head:true});
+
+    if(error){
+
+        console.error(table,error);
+
+        return "—";
+    }
+
+    return count ?? 0;
+}
+
+
 async function loadDashboard(){
 
-    try{
+    document.getElementById("statClients").textContent =
+    await countRows("profiles");
 
-        const [
-            appointments,
-            consultations,
-            cases,
-            profiles
-        ] =
-        await Promise.all([
+    document.getElementById("statCases").textContent =
+    await countRows("cases");
 
-            supabaseClient
-            .from("appointments")
-            .select("*",{count:"exact",head:true}),
+    document.getElementById("statAppointments").textContent =
+    await countRows("appointments");
 
-            supabaseClient
-            .from("consultations")
-            .select("*",{count:"exact",head:true}),
+    document.getElementById("statConsultations").textContent =
+    await countRows("consultations");
 
-            supabaseClient
-            .from("cases")
-            .select("*",{count:"exact",head:true}),
-
-            supabaseClient
-            .from("profiles")
-            .select("*",{count:"exact",head:true})
-
-        ]);
-
-
-        document
-        .getElementById("statAppointments")
-        .textContent =
-        appointments.count ?? 0;
-
-
-        document
-        .getElementById("statConsultations")
-        .textContent =
-        consultations.count ?? 0;
-
-
-        document
-        .getElementById("statCases")
-        .textContent =
-        cases.count ?? 0;
-
-
-        document
-        .getElementById("statClients")
-        .textContent =
-        profiles.count ?? 0;
-
-
-        await loadRecentAppointments();
-
-    }
-    catch(error){
-
-        console.error(error);
-
-        showMessage(
-            "Dashboard loading error."
-        );
-
-    }
+    loadRecentAppointments();
 
 }
 
 
 async function loadRecentAppointments(){
 
-    const container =
-    document.getElementById(
-        "recentAppointments"
-    );
+    const box =
+    document.getElementById("recentAppointments");
 
+    box.innerHTML =
+    '<div class="loading">Loading...</div>';
 
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
     await supabaseClient
     .from("appointments")
     .select("*")
-    .order(
-        "created_at",
-        {ascending:false}
-    )
-    .limit(5);
-
+    .order("created_at",{ascending:false})
+    .limit(8);
 
     if(error){
 
-        container.innerHTML =
-        `<div class="loading">
-            ${escapeHtml(error.message)}
-        </div>`;
+        box.innerHTML =
+        '<div class="empty">'+escapeHtml(error.message)+'</div>';
 
         return;
-
     }
-
 
     if(!data || !data.length){
 
-        container.innerHTML =
-        `<div class="loading">
-            No appointments found.
-        </div>`;
+        box.innerHTML =
+        '<div class="empty">No appointments found.</div>';
 
         return;
-
     }
 
+    let html="<table><thead><tr>";
 
-    let html = `
-    <table>
+    html+="<th>CLIENT</th>";
+    html+="<th>MOBILE</th>";
+    html+="<th>DATE</th>";
+    html+="<th>TIME</th>";
+    html+="<th>PURPOSE</th>";
+    html+="<th>STATUS</th>";
 
-        <thead>
+    html+="</tr></thead><tbody>";
 
-            <tr>
+    data.forEach(row=>{
 
-                <th>CLIENT</th>
-                <th>MOBILE</th>
-                <th>DATE</th>
-                <th>TIME</th>
-                <th>STATUS</th>
+        html+="<tr>";
 
-            </tr>
+        html+="<td>"+escapeHtml(row.client_name)+"</td>";
+        html+="<td>"+escapeHtml(row.mobile)+"</td>";
+        html+="<td>"+escapeHtml(row.appointment_date)+"</td>";
+        html+="<td>"+escapeHtml(row.appointment_time)+"</td>";
+        html+="<td>"+escapeHtml(row.purpose || "")+"</td>";
+        html+="<td><span class='status'>"+escapeHtml(row.status || "Pending")+"</span></td>";
 
-        </thead>
-
-        <tbody>
-    `;
-
-
-    data.forEach(row => {
-
-        html += `
-
-        <tr>
-
-            <td>
-                ${escapeHtml(row.client_name)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.mobile)}
-            </td>
-
-            <td>
-                ${formatDate(row.appointment_date)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.appointment_time)}
-            </td>
-
-            <td>
-                <span class="status">
-                    ${escapeHtml(row.status)}
-                </span>
-            </td>
-
-        </tr>
-
-        `;
+        html+="</tr>";
 
     });
 
+    html+="</tbody></table>";
 
-    html += `
-        </tbody>
-    </table>
-    `;
-
-
-    container.innerHTML = html;
+    box.innerHTML=html;
 
 }
 
 
 /* =====================================================
-   APPOINTMENTS
+   CLIENTS
 ===================================================== */
 
-async function loadAppointments(){
+async function loadClients(){
 
-    const container =
-    document.getElementById(
-        "appointmentsTable"
-    );
+    const box =
+    document.getElementById("clientsTable");
 
+    box.innerHTML =
+    '<div class="loading">Loading...</div>';
 
-    container.innerHTML =
-    `<div class="loading">Loading...</div>`;
-
-
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
     await supabaseClient
-    .from("appointments")
-    .select("*")
-    .order(
-        "created_at",
-        {ascending:false}
-    );
-
+    .from("profiles")
+    .select("id,full_name,mobile,email,role,created_at")
+    .order("created_at",{ascending:false});
 
     if(error){
 
-        container.innerHTML =
-        `<div class="loading">
-            ${escapeHtml(error.message)}
-        </div>`;
+        box.innerHTML =
+        '<div class="empty">'+escapeHtml(error.message)+'</div>';
 
         return;
-
     }
-
 
     if(!data.length){
 
-        container.innerHTML =
-        `<div class="loading">
-            No appointments found.
-        </div>`;
+        box.innerHTML =
+        '<div class="empty">No clients found.</div>';
 
         return;
-
     }
 
+    let html="<table><thead><tr>";
 
-    let html = `
-    <table>
+    html+="<th>ID</th>";
+    html+="<th>NAME</th>";
+    html+="<th>MOBILE</th>";
+    html+="<th>EMAIL</th>";
+    html+="<th>ROLE</th>";
 
-    <thead>
+    html+="</tr></thead><tbody>";
 
-        <tr>
+    data.forEach(row=>{
 
-            <th>CLIENT</th>
-            <th>MOBILE</th>
-            <th>DATE</th>
-            <th>TIME</th>
-            <th>PURPOSE</th>
-            <th>STATUS</th>
-            <th>CREATED</th>
+        html+="<tr>";
 
-        </tr>
+        html+="<td>"+escapeHtml(row.id)+"</td>";
+        html+="<td>"+escapeHtml(row.full_name)+"</td>";
+        html+="<td>"+escapeHtml(row.mobile || "")+"</td>";
+        html+="<td>"+escapeHtml(row.email || "")+"</td>";
+        html+="<td><span class='status'>"+escapeHtml(row.role)+"</span></td>";
 
-    </thead>
-
-    <tbody>
-    `;
-
-
-    data.forEach(row => {
-
-        html += `
-
-        <tr>
-
-            <td>
-                ${escapeHtml(row.client_name)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.mobile)}
-            </td>
-
-            <td>
-                ${formatDate(row.appointment_date)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.appointment_time)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.purpose)}
-            </td>
-
-            <td>
-                <span class="status">
-                    ${escapeHtml(row.status)}
-                </span>
-            </td>
-
-            <td>
-                ${formatDateTime(row.created_at)}
-            </td>
-
-        </tr>
-
-        `;
+        html+="</tr>";
 
     });
 
+    html+="</tbody></table>";
 
-    html += `
-    </tbody>
-    </table>
-    `;
-
-
-    container.innerHTML = html;
-
-}
-
-
-/* =====================================================
-   CONSULTATIONS
-===================================================== */
-
-async function loadConsultations(){
-
-    const container =
-    document.getElementById(
-        "consultationsTable"
-    );
-
-
-    container.innerHTML =
-    `<div class="loading">Loading...</div>`;
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .from("consultations")
-    .select("*")
-    .order(
-        "created_at",
-        {ascending:false}
-    );
-
-
-    if(error){
-
-        container.innerHTML =
-        `<div class="loading">
-            ${escapeHtml(error.message)}
-        </div>`;
-
-        return;
-
-    }
-
-
-    if(!data.length){
-
-        container.innerHTML =
-        `<div class="loading">
-            No consultation requests found.
-        </div>`;
-
-        return;
-
-    }
-
-
-    let html = `
-    <table>
-
-    <thead>
-
-        <tr>
-
-            <th>NAME</th>
-            <th>MOBILE</th>
-            <th>ISSUE</th>
-            <th>DESCRIPTION</th>
-            <th>STATUS</th>
-            <th>CREATED</th>
-
-        </tr>
-
-    </thead>
-
-    <tbody>
-    `;
-
-
-    data.forEach(row => {
-
-        html += `
-
-        <tr>
-
-            <td>
-                ${escapeHtml(row.full_name)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.mobile)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.issue_type)}
-            </td>
-
-            <td>
-                ${escapeHtml(row.description)}
-            </td>
-
-            <td>
-                <span class="status">
-                    ${escapeHtml(row.status)}
-                </span>
-            </td>
-
-            <td>
-                ${formatDateTime(row.created_at)}
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html += `
-    </tbody>
-    </table>
-    `;
-
-
-    container.innerHTML = html;
+    box.innerHTML=html;
 
 }
 
@@ -2477,54 +1385,37 @@ async function loadConsultations(){
 
 async function loadCases(){
 
-    const container =
-    document.getElementById(
-        "casesTable"
-    );
+    const box =
+    document.getElementById("casesTable");
 
+    box.innerHTML =
+    '<div class="loading">Loading...</div>';
 
-    container.innerHTML =
-    `<div class="loading">Loading...</div>`;
-
-
-    const {
-        data,
-        error
-    } =
+    const {data,error} =
     await supabaseClient
     .from("cases")
     .select("*")
-    .order(
-        "created_at",
-        {ascending:false}
-    );
-
+    .order("created_at",{ascending:false});
 
     if(error){
 
-        container.innerHTML =
-        `<div class="loading">
-            ${escapeHtml(error.message)}
-        </div>`;
+        box.innerHTML =
+        '<div class="empty">'+escapeHtml(error.message)+'</div>';
 
         return;
-
     }
-
 
     if(!data.length){
 
-        container.innerHTML =
-        `<div class="loading">
-            No cases found.
-        </div>`;
+        box.innerHTML =
+        '<div class="empty">No cases found.</div>';
 
         return;
-
     }
 
+    let html="<table><thead><tr>";
 
-    let html = `
-    <table>
-
-    <thead
+    html+="<th>CASE NO.</th>";
+    html+="<th>CLIENT ID</th>";
+    html+="<th>COURT</th>";
+    html+="<th>
