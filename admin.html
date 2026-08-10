@@ -1,1 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
+<title>Qureshi Law Firm | Admin Panel</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    color:#111;
+}
+
+header{
+    background:#000;
+    color:#fff;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header h1{
+    font-family:Georgia,serif;
+    font-size:25px;
+}
+
+.logout{
+    background:#fff;
+    color:#000;
+    border:0;
+    padding:9px 16px;
+    cursor:pointer;
+}
+
+.login{
+    max-width:420px;
+    margin:100px auto;
+    background:#fff;
+    padding:35px;
+    box-shadow:0 10px 30px #0002;
+}
+
+.login h2{
+    margin-bottom:25px;
+    font-family:Georgia,serif;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    margin:7px 0 15px;
+    border:1px solid #ccc;
+}
+
+button{
+    cursor:pointer;
+}
+
+.login button,
+.action{
+    background:#000;
+    color:#fff;
+    border:0;
+    padding:12px 18px;
+}
+
+.dashboard{
+    display:none;
+}
+
+nav{
+    background:#111;
+    padding:12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+nav button{
+    background:#222;
+    color:#fff;
+    border:1px solid #444;
+    padding:10px 15px;
+}
+
+nav button:hover{
+    background:#fff;
+    color:#000;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:25px;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px #0001;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:#000;
+    color:#fff;
+    padding:25px;
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    margin-top:8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+    font-size:13px;
+}
+
+th{
+    background:#111;
+    color:#fff;
+}
+
+.status{
+    padding:5px 8px;
+    background:#eee;
+}
+
+.message{
+    margin:15px 0;
+    padding:12px;
+    display:none;
+}
+
+.success{
+    background:#dff5e4;
+    color:#145c2b;
+}
+
+.error{
+    background:#ffe1e1;
+    color:#8b0000;
+}
+
+@media(max-width:800px){
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>QURESHI LAW FIRM — ADMIN</h1>
+    <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<!-- LOGIN -->
+
+<div id="loginBox" class="login">
+
+<h2>Admin Login</h2>
+
+<input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+>
+
+<input
+    type="password"
+    id="password"
+    placeholder="Password"
+>
+
+<button onclick="login()">
+    Login
+</button>
+
+<div id="loginMessage" class="message"></div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="dashboard">
+
+<nav>
+    <button onclick="showSection('dashboardHome')">
+        Dashboard
+    </button>
+
+    <button onclick="showSection('appointments')">
+        Appointments
+    </button>
+
+    <button onclick="showSection('consultations')">
+        Consultations
+    </button>
+
+    <button onclick="showSection('cases')">
+        Cases
+    </button>
+
+    <button onclick="showSection('profiles')">
+        Clients
+    </button>
+</nav>
+
+
+<div class="container">
+
+
+<!-- DASHBOARD HOME -->
+
+<section id="dashboardHome">
+
+<div class="card">
+
+<h2>Welcome, Aqeel Ahmed Qureshi</h2>
+
+<p>
+Qureshi Law Firm Administration Panel
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+Appointments
+<strong id="appointmentCount">0</strong>
+</div>
+
+<div class="stat">
+Consultations
+<strong id="consultationCount">0</strong>
+</div>
+
+<div class="stat">
+Cases
+<strong id="caseCount">0</strong>
+</div>
+
+<div class="stat">
+Clients
+<strong id="clientCount">0</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- APPOINTMENTS -->
+
+<section id="appointments" style="display:none">
+
+<div class="card">
+
+<h2>Appointments</h2>
+
+<div id="appointmentsTable">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONSULTATIONS -->
+
+<section id="consultations" style="display:none">
+
+<div class="card">
+
+<h2>Consultations</h2>
+
+<div id="consultationsTable">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CASES -->
+
+<section id="cases" style="display:none">
+
+<div class="card">
+
+<h2>Add New Case</h2>
+
+<form onsubmit="addCase(event)">
+
+<input
+id="caseClient"
+placeholder="Client UUID"
+required
+>
+
+<input
+id="caseNumber"
+placeholder="Case Number"
+required
+>
+
+<input
+id="court"
+placeholder="Court"
+>
+
+<input
+id="caseType"
+placeholder="Case Type"
+>
+
+<input
+id="caseTitle"
+placeholder="Case Title"
+>
+
+<select id="caseStatus">
+<option>Ongoing</option>
+<option>Pending</option>
+<option>Disposed</option>
+</select>
+
+<input
+id="nextHearing"
+type="date"
+>
+
+<textarea
+id="caseDescription"
+placeholder="Case Description"
+></textarea>
+
+<button class="action">
+Add Case
+</button>
+
+</form>
+
+<div id="caseMessage" class="message"></div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Existing Cases</h2>
+
+<div id="casesTable">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CLIENTS -->
+
+<section id="profiles" style="display:none">
+
+<div class="card">
+
+<h2>Clients</h2>
+
+<div id="profilesTable">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE CONFIGURATION
+===================================================== */
+
+/*
+ IMPORTANT:
+
+ یہاں اپنی Supabase Project URL اور
+ ANON / PUBLISHABLE KEY ڈالیں۔
+
+ Service Role Key ہرگز نہ ڈالیں۔
+*/
+
+const SUPABASE_URL =
+"https://qviauargicjxhpspgfib.supabase.co";
+
+const SUPABASE_ANON_KEY =
+"PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+
+const client =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login(){
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const msg =
+        document.getElementById("loginMessage");
+
+    msg.style.display="none";
+
+    const {data,error} =
+        await client.auth.signInWithPassword({
+            email,
+            password
+        });
+
+    if(error){
+
+        msg.className="message error";
+
+        msg.innerText=error.message;
+
+        msg.style.display="block";
+
+        return;
+    }
+
+    /* Verify admin */
+
+    const {data:profile,error:profileError} =
+        await client
+        .from("profiles")
+        .select("id,full_name,email,role")
+        .eq("id",data.user.id)
+        .single();
+
+    if(profileError || !profile || profile.role !== "admin"){
+
+        await client.auth.signOut();
+
+        msg.className="message error";
+
+        msg.innerText=
+        "Access denied. This account is not an administrator.";
+
+        msg.style.display="block";
+
+        return;
+    }
+
+    document.getElementById("loginBox").style.display="none";
+
+    document.getElementById("dashboard").style.display="block";
+
+    loadDashboard();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+    await client.auth.signOut();
+
+    location.reload();
+
+}
+
+
+/* =====================================================
+   SECTION NAVIGATION
+===================================================== */
+
+function showSection(id){
+
+    const sections=[
+        "dashboardHome",
+        "appointments",
+        "consultations",
+        "cases",
+        "profiles"
+    ];
+
+    sections.forEach(section=>{
+        document.getElementById(section).style.display="none";
+    });
+
+    document.getElementById(id).style.display="block";
+
+    if(id==="appointments")
+        loadAppointments();
+
+    if(id==="consultations")
+        loadConsultations();
+
+    if(id==="cases")
+        loadCases();
+
+    if(id==="profiles")
+        loadProfiles();
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function loadDashboard(){
+
+    const tables=[
+        ["appointments","appointmentCount"],
+        ["consultations","consultationCount"],
+        ["cases","caseCount"],
+        ["profiles","clientCount"]
+    ];
+
+    for(const [table,id] of tables){
+
+        const {count,error} =
+            await client
+            .from(table)
+            .select("*",{count:"exact",head:true});
+
+        if(!error)
+            document.getElementById(id).innerText=count || 0;
+    }
+
+}
+
+
+/* =====================================================
+   APPOINTMENTS
+===================================================== */
+
+async function loadAppointments(){
+
+    const box=
+    document.getElementById("appointmentsTable");
+
+    const {data,error}=
+    await client
+    .from("appointments")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        "<p>Error loading appointments.</p>";
+
+        return;
+    }
+
+    if(!data.length){
+
+        box.innerHTML="<p>No appointments found.</p>";
+
+        return;
+    }
+
+    let html=`
+    <table>
+    <tr>
+        <th>Client</th>
+        <th>Mobile</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Purpose</th>
+        <th>Status</th>
+    </tr>`;
+
+    data.forEach(row=>{
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(row.client_name)}</td>
+            <td>${escapeHtml(row.mobile)}</td>
+            <td>${row.appointment_date || ""}</td>
+            <td>${row.appointment_time || ""}</td>
+            <td>${escapeHtml(row.purpose || "")}</td>
+            <td>
+                <select
+                onchange="updateAppointment('${row.id}',this.value)">
+                    <option ${row.status==="Pending"?"selected":""}>
+                    Pending
+                    </option>
+
+                    <option ${row.status==="Confirmed"?"selected":""}>
+                    Confirmed
+                    </option>
+
+                    <option ${row.status==="Completed"?"selected":""}>
+                    Completed
+                    </option>
+
+                    <option ${row.status==="Cancelled"?"selected":""}>
+                    Cancelled
+                    </option>
+                </select>
+            </td>
+        </tr>`;
+    });
+
+    html+="</table>";
+
+    box.innerHTML=html;
+
+}
+
+
+/* =====================================================
+   UPDATE APPOINTMENT
+===================================================== */
+
+async function updateAppointment(id,status){
+
+    const {error}=
+    await client
+    .from("appointments")
+    .update({status})
+    .eq("id",id);
+
+    if(error)
+        alert(error.message);
+
+}
+
+
+/* =====================================================
+   CONSULTATIONS
+===================================================== */
+
+async function loadConsultations(){
+
+    const box=
+    document.getElementById("consultationsTable");
+
+    const {data,error}=
+    await client
+    .from("consultations")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        "<p>Error loading consultations.</p>";
+
+        return;
+    }
+
+    if(!data.length){
+
+        box.innerHTML=
+        "<p>No consultations found.</p>";
+
+        return;
+    }
+
+    let html=`
+    <table>
+    <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Issue</th>
+        <th>Description</th>
+        <th>Status</th>
+    </tr>`;
+
+    data.forEach(row=>{
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(row.full_name)}</td>
+            <td>${escapeHtml(row.mobile)}</td>
+            <td>${escapeHtml(row.issue_type || "")}</td>
+            <td>${escapeHtml(row.description || "")}</td>
+            <td>
+                <select
+                onchange="updateConsultation('${row.id}',this.value)">
+
+                    <option ${row.status==="New"?"selected":""}>
+                    New
+                    </option>
+
+                    <option ${row.status==="Contacted"?"selected":""}>
+                    Contacted
+                    </option>
+
+                    <option ${row.status==="Completed"?"selected":""}>
+                    Completed
+                    </option>
+
+                </select>
+            </td>
+        </tr>`;
+    });
+
+    html+="</table>";
+
+    box.innerHTML=html;
+
+}
+
+
+/* =====================================================
+   UPDATE CONSULTATION
+===================================================== */
+
+async function updateConsultation(id,status){
+
+    const {error}=
+    await client
+    .from("consultations")
+    .update({status})
+    .eq("id",id);
+
+    if(error)
+        alert(error.message);
+
+}
+
+
+/* =====================================================
+   CASES
+===================================================== */
+
+async function loadCases(){
+
+    const box=
+    document.getElementById("casesTable");
+
+    const {data,error}=
+    await client
+    .from("cases")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        "<p>Error loading cases.</p>";
+
+        return;
+    }
+
+    if(!data.length){
+
+        box.innerHTML=
+        "<p>No cases found.</p>";
+
+        return;
+    }
+
+    let html=`
+    <table>
+    <tr>
+        <th>Case No.</th>
+        <th>Court</th>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Next Hearing</th>
+    </tr>`;
+
+    data.forEach(row=>{
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(row.case_number)}</td>
+            <td>${escapeHtml(row.court || "")}</td>
+            <td>${escapeHtml(row.case_type || "")}</td>
+            <td>${escapeHtml(row.title || "")}</td>
+            <td>${escapeHtml(row.status || "")}</td>
+            <td>${row.next_hearing || ""}</td>
+        </tr>`;
+    });
+
+    html+="</table>";
+
+    box.innerHTML=html;
+
+}
+
+
+/* =====================================================
+   ADD CASE
+===================================================== */
+
+async function addCase(event){
+
+    event.preventDefault();
+
+    const message=
+    document.getElementById("caseMessage");
+
+    const {data,error}=
+    await client
+    .from("cases")
+    .insert({
+        client_id:
+            document.getElementById("caseClient").value.trim(),
+
+        case_number:
+            document.getElementById("caseNumber").value.trim(),
+
+        court:
+            document.getElementById("court").value.trim(),
+
+        case_type:
+            document.getElementById("caseType").value.trim(),
+
+        title:
+            document.getElementById("caseTitle").value.trim(),
+
+        status:
+            document.getElementById("caseStatus").value,
+
+        next_hearing:
+            document.getElementById("nextHearing").value || null,
+
+        description:
+            document.getElementById("caseDescription").value.trim()
+    });
+
+    if(error){
+
+        message.className="message error";
+
+        message.innerText=error.message;
+
+        message.style.display="block";
+
+        return;
+    }
+
+    message.className="message success";
+
+    message.innerText="Case added successfully.";
+
+    message.style.display="block";
+
+    event.target.reset();
+
+    loadCases();
+
+}
+
+
+/* =====================================================
+   PROFILES
+===================================================== */
+
+async function loadProfiles(){
+
+    const box=
+    document.getElementById("profilesTable");
+
+    const {data,error}=
+    await client
+    .from("profiles")
+    .select("id,full_name,email,mobile,role")
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        "<p>Error loading clients.</p>";
+
+        return;
+    }
+
+    let html=`
+    <table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Role</th>
+        <th>User ID</th>
+    </tr>`;
+
+    data.forEach(row=>{
+
+        html+=`
+        <tr>
+            <td>${escapeHtml(row.full_name)}</td>
+            <td>${escapeHtml(row.email || "")}</td>
+            <td>${escapeHtml(row.mobile || "")}</td>
+            <td>${escapeHtml(row.role)}</td>
+            <td>${row.id}</td>
+        </tr>`;
+    });
+
+    html+="</table>";
+
+    box.innerHTML=html;
+
+}
+
+
+/* =====================================================
+   SECURITY / HTML ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+    if(value===null || value===undefined)
+        return "";
+
+    return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+/* =====================================================
+   AUTO LOGIN CHECK
+===================================================== */
+
+(async function(){
+
+    const {data}=
+        await client.auth.getSession();
+
+    if(data.session){
+
+        const {data:profile}=
+        await client
+        .from("profiles")
+        .select("role")
+        .eq("id",data.session.user.id)
+        .single();
+
+        if(profile && profile.role==="admin"){
+
+            document.getElementById("loginBox").style.display="none";
+
+            document.getElementById("dashboard").style.display="block";
+
+            loadDashboard();
+        }
+    }
+
+})();
+
+</script>
+
+</body>
+  </html>
